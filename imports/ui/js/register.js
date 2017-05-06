@@ -1,5 +1,5 @@
 import { Template } from "meteor/templating";
-import "./register.html";
+import "../html/register.html";
 Template.register.events({
 	'submit #regform'(event,instance){
 		event.preventDefault();
@@ -13,7 +13,7 @@ Template.register.events({
 			console.log("Pass Not Same");
 			return;
 		}
-		var passControl = Meteor.myAuthFuncs.isPasswordValid(password); 
+		var passControl = Meteor.myAuthFuncs.isPasswordValid(password);
 		console.log(passControl.isErr + " -- " +passControl.msg);
 		if(passControl.isErr){
 			console.log(passControl.msg);
