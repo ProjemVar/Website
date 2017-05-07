@@ -29,9 +29,11 @@ Template.register.events({
 				password: password,
 			},
 			function(error){
-				console.log("Ok");
 				if(error)
 					console.log(error.reason);
+				else
+					FlowRouter.go("/home");
+
 			}
 		);
 	},

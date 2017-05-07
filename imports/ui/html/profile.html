@@ -1,3 +1,14 @@
 <template name="profile">
   This the Profile
+  <br>
+  {{#each getProfile}}
+    {{> profileCollection}}
+  {{/each}}
+
+  <input type="text" id="name" />
+  <input type="surname" id="surname" />
+  <button id="insert" class="btn btn-primary"> INSERT</button>
+</template>
+<template name="profileCollection">
+  {{Name}} ----- {{Surname}}<br>
 </template>
