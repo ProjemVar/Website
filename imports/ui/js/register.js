@@ -31,8 +31,10 @@ Template.register.events({
 			function(error){
 				if(error)
 					console.log(error.reason);
-				else
+				else{
+					Meteor.dbProfile.createProfile();
 					FlowRouter.go("/home");
+				}
 
 			}
 		);

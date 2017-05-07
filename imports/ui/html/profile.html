@@ -1,14 +1,18 @@
 <template name="profile">
-  This the Profile
-  <br>
-  {{#each getProfile}}
-    {{> profileCollection}}
-  {{/each}}
-
-  <input type="text" id="name" />
-  <input type="surname" id="surname" />
-  <button id="insert" class="btn btn-primary"> INSERT</button>
-</template>
-<template name="profileCollection">
-  {{Name}} ----- {{Surname}}<br>
+  <div class="well row row-eq-height">
+    <div class="col-sm-6 form-group ">
+      <h1>Profile Info</h1>
+      <label for="name">Name : </label>
+      <input class="form-control" type="text" id="name" value="{{getProfile.Name}}"/>
+      <label for="surname">Surname : </label>
+      <input class="form-control" type="surname" id="surname" value="{{getProfile.Surname}}"/>
+      <br>
+      <button class="form-control btn btn-primary" id="insert" >Update</button>
+    </div>
+    <div class="col-sm-6">
+      <h1>User Info</h1>
+      <p>Username : <strong>{{getUserInfo.username}}</strong></p>
+      <p>Email : <strong>{{getUserInfo.email}}</strong></p>
+    </div>
+  </div>
 </template>
