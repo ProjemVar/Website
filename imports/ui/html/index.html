@@ -1,3 +1,25 @@
 <template name="index">
-  this is the index
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>UserId</th>
+        <th>Name</th>
+        <th>Surname</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each allProfiles}}
+      <tr>
+        <td>{{UserId}}</td>
+        <td>{{Name}}</td>
+        <td>{{Surname}}</td>
+      </tr>
+      {{/each}}
+
+    </tbody>
+  </table>
+
+
 </template>

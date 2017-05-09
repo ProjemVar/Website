@@ -2,6 +2,9 @@ import { Mongo } from "meteor/mongo";
 var ProfileCol = new Mongo.Collection("Profile");
 
 Meteor.dbProfile = {
+  listAllProfiles : function(){
+    return ProfileCol.find();
+  },
   getProfile : function(){
     var userId = Meteor.userId();
     if(userId == null)
