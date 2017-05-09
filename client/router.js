@@ -16,6 +16,11 @@ FlowRouter.route('/profile/', {
     BlazeLayout.render("main", {content : "profile"});
   }
 });
+FlowRouter.route('/project/', {
+  action: function() {
+    BlazeLayout.render("main", {content : "project"});
+  }
+});
 
 FlowRouter.route('/login/', {
   action: function() {
