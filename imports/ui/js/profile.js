@@ -13,10 +13,12 @@ Template.profile.helpers({
   }
 });
 Template.profile.events({
-  "click #insert" (event,instance){
+  "click #update" (event,instance){
     event.preventDefault();
     var name = $("#name").val();
     var surname = $("#surname").val();
     Meteor.dbProfile.setProfile(name,surname);
+    alert("Update Done");
+    //NO ERROR CONTROL FOR NOW
   },
 });
