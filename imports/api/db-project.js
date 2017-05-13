@@ -2,8 +2,10 @@ import { Mongo } from "meteor/mongo";
 var ProjectCol = new Mongo.Collection("Project");
 
 Meteor.dbProject = {
-  getProjects : function(name,val){
-    return ProjectCol.find({name : val},{sort: {create_date: -1}});
+  getProjectsByUserId : function(){
+    var userId = Meteor.userId();
+    if(userId != null)
+      return ProjectCol.find({UserId : userId},{sort: {create_date: -1}});
     //return ProjectCol.find();
   },
   setProject : function(id,obj){

@@ -4,7 +4,7 @@ import "../../api/db-project.js";
 
 Template.project.helpers({
   getUserProjects(){
-    return Meteor.dbProject.getProjects({UserId : Meteor.userId()});
+    return Meteor.dbProject.getProjectsByUserId();
   }
 });
 
