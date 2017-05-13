@@ -2,13 +2,13 @@
   <button class="btn btn-primary" data-toggle="collapse" data-target="#newProjectDiv">New Project</button>
   <div id="newProjectDiv" class="collapse form-group">
     <label for="Name">Name : </label>
-    <input type="text" class="form-control" placeholder="Name" id="Name"/>
+    <input type="text" class="form-control" placeholder="Name" id="cName"/>
     <label for="desc">Description</label>
-    <textarea id="desc" class="form-control"></textarea>
-    <button class="pull-right btn btn-success">Create</button>
+    <textarea id="cDesc" class="form-control"></textarea>
+    <button class="pull-right btn btn-success" id="create">Create</button>
   </div>
   <h1>My Projects</h1>
-  {{#each getUserProject }}
+  {{#each getUserProjects }}
   <div class="row well">
     <div class="col-sm-3">
       <img src="/images/linux-logo.png" class="img-circle" width="100" height="100"/>
