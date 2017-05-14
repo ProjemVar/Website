@@ -17,4 +17,10 @@ Meteor.dbProject = {
       var date = new Date();
       ProjectCol.insert({UserId : userId,Name : name,Description : desc,create_date : date,update_date : date});
   },
+  deleteProject : function(id){
+    var userId = Meteor.userId();
+    if(userId == null)
+      return;
+    ProjectCol.remove({_id : id});
+  }
 };
