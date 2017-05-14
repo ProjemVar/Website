@@ -14,8 +14,10 @@ Template.project.events({
     event.preventDefault();
     var name = $("#cName").val();
     var desc = $("#cDesc").val();
+    var content = $("#cContent").val();
     $("#cName").val("");
     $("#cDesc").val("");
+    $("#cContent").val("");
     Meteor.dbProject.addProject(name,desc);
   },
   "click #deleteProject"(event,instance){
