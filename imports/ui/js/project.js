@@ -18,7 +18,10 @@ Template.project.events({
     $("#cDesc").val("");
     Meteor.dbProject.addProject(name,desc);
   },
-
+  "click #deleteProject"(event,instance){
+    Meteor.dbProject.deleteProject(this._id);
+    //alert(this._id);
+  }
 
 
 });
