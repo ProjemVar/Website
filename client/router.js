@@ -16,12 +16,24 @@ FlowRouter.route('/profile/', {
     BlazeLayout.render("main", {content : "profile"});
   }
 });
+///Project begin
 FlowRouter.route('/project/', {
   action: function() {
     BlazeLayout.render("main", {content : "project"});
   }
 });
 
+FlowRouter.route('/project/:id', {
+  action: function() {
+    BlazeLayout.render("main", {content : "showproject"});
+  }
+});
+FlowRouter.route('/project/edit/:id', {
+  action: function() {
+    BlazeLayout.render("main", {content : "editproject"});
+  }
+});
+//project end
 FlowRouter.route('/login/', {
   action: function() {
     BlazeLayout.render("main", {content : "login"});
