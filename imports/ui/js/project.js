@@ -1,29 +1,24 @@
-import { Template } from "meteor/templating";
-import "../html/project.html";
-import "../../api/db-project.js";
+import { Meteor } from 'meteor/meteor'
+import { Template } from 'meteor/templating'
+import '../html/project.html'
+import '../../api/db-project.js'
 
 Template.project.helpers({
-  getUserProjects(){
-    return Meteor.dbProject.getProjectsByUserId();
+  getUserProjects () {
+    return Meteor.dbProject.getProjectsByUserId()
   }
-});
-
+})
 
 Template.project.events({
-  "click #create"(event,instance){
-    event.preventDefault();
-    var name = $("#cName").val();
-    var desc = $("#cDesc").val();
-    var content = $("#cContent").val();
-    $("#cName").val("");
-    $("#cDesc").val("");
-    $("#cContent").val("");
-    Meteor.dbProject.addProject(name,desc);
+  'click #create' (event, instance) {
+    event.preventDefault()
+    let name = event.target.cName.value
+    let desc = event.target.cDesc.value
+    let content = event.target.cContent.value
+    Meteor.dbProject.addProject(name, desc, content)
   },
-  "click #deleteProject"(event,instance){
-    Meteor.dbProject.deleteProject(this._id);
-    //alert(this._id);
+  'click #deleteProject' (event, instance) {
+    Meteor.dbProject.deleteProject(this._id)
+    // alert(this._id);
   }
-
-
-});
+})
