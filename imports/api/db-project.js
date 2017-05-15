@@ -9,7 +9,7 @@ Meteor.dbProject = {
     //return ProjectCol.find();
   },
   setProject : function(id,obj){
-    ProjectCol.update({_id : id},$set : obj);
+    ProjectCol.update({_id : id}, {$set : obj});
   },
   addProject : function(name,desc){
       var userId = Meteor.userId();
