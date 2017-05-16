@@ -5,6 +5,9 @@ import '../../api/db-profile.js'
 
 Template.index.helpers({
   allProfiles () {
-    return Meteor.dbProfile.listAllProfiles()
+    return Meteor.users.find({})
+  },
+  userEmail: function () {
+    return this.emails[0].address
   }
 })

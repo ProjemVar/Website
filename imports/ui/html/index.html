@@ -1,32 +1,31 @@
 <template name="index">
-<div class="row">
-  <div class="col-sm-9">
-    <input type="text" class="form-control"/>
+  <!-- I think there is admin page -->
+  <div class="row">
+    <div class="col-sm-9">
+      <input type="text" class="form-control"/>
+    </div>
+    <div class="col-sm-3">
+      <button class="form-control btn btn-primary">Search</button>
+    </div>
   </div>
-  <div class="col-sm-3">
-    <button class="form-control btn btn-primary">Search</button>
+  <div class="well">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>UserId</th>
+          <th>Username</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each allProfiles}}
+          <tr>
+            <td>{{ _id }}</td>
+            <td><a href="/profile/{{_id}}">{{ username }}</a></td>
+            <td>{{ userEmail }}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
   </div>
-</div>
-<div class="well">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>UserId</th>
-        <th>Name</th>
-        <th>Surname</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each allProfiles}}
-      <tr>
-        <td>{{UserId}}</td>
-        <td>{{Name}}</td>
-        <td>{{Surname}}</td>
-      </tr>
-      {{/each}}
-
-    </tbody>
-  </table>
-</div>
-
 </template>
