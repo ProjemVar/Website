@@ -1,19 +1,23 @@
 <template name="register">
-	<div class="row">
-		<div class="col-sm-offset-4 col-sm-4">
-			<form id="regform">
-				<div class="form-group">
-					<label for="email">Email : </label>
-					<input class="form-control" name="email" type="text" id="email" />
-					<label for="username">Username : </label>
-					<input class="form-control" name="username" type="text" id="username" />
-					<label for="password">Password : </label>
-					<input class="form-control" name="password" type="password" id="password"/>
-					<label for="repassword">Re-Password : </label>
-					<input class="form-control" name="repassword" type="password" id="repassword"/>
-				</div>
-				<input class="form-control btn-success" type="submit" value="Register" />
-		</form>
-	</div>
-</div>
+	{{#if currentUser}}
+		<h3 class="white">You are logged in. return <a href="/">home</a></h3>
+	{{else}}
+		<div class="row">
+			<div class="col-sm-offset-4 col-sm-4">
+				<form id="register-form">
+					<div class="form-group">
+						<label for="email">Email : </label>
+						<input class="form-control" name="email" type="text" id="email" />
+						<label for="username">Username : </label>
+						<input class="form-control" name="username" type="text" id="username" />
+						<label for="password">Password : </label>
+						<input class="form-control" name="password" type="password" id="password"/>
+						<label for="repassword">Re-Password : </label>
+						<input class="form-control" name="repassword" type="password" id="repassword"/>
+					</div>
+					<input class="form-control btn-success" type="submit" value="Register" />
+				</form>
+			</div>
+		</div>
+	{{/if}}
 </template>

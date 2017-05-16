@@ -1,41 +1,38 @@
 import { Meteor } from 'meteor/meteor'
 import { Accounts } from 'meteor/accounts-base'
 import { FlowRouter } from 'meteor/kadira:flow-router'
+import { Bert } from 'meteor/themeteorchef:bert'
 import { Template } from 'meteor/templating'
 import '../html/register.html'
 
 Template.register.events({
-  'submit #regform' (event, instance) {
+  'submit #register-form' (event, instance) {
     event.preventDefault()
-    let username = event.target.username.value
-    let email = event.target.email.value
-    let password = event.target.password.value
-    let repassword = event.target.repassword.value
-    if (!Meteor.myAuthFuncs.comparePass(password, repassword)) {
-      console.log('Pass Not Same')
-      return
+    let username = Meteor.myAuthFuncs.trimInput(event.target.username.value)
+    let email = Meteor.myAuthFuncs.trimInput(event.target.email.value)
+    let password = Meteor.myAuthFuncs.trimInput(event.target.password.value)
+    let repassword = Meteor.myAuthFuncs.trimInput(event.target.repassword.value)
+    if (Meteor.myAuthFuncs.isNotEmpty(username) &&
+        Meteor.myAuthFuncs.isNotEmpty(email) &&
+        Meteor.myAuthFuncs.isNotEmpty(password) &&
+        Meteor.myAuthFuncs.isEmail(email) &&
+        Meteor.myAuthFuncs.areValidPasswords(password, repassword)) {
+        // do stuff
+      Accounts.createUser({
+        username: username,
+        email: email,
+        password: password,
+        profile: {
+        }
+      }, function (err) {
+        if (err) {
+          Bert.alert(err.reason, 'danger', 'growl-top-right')
+        } else {
+          Bert.alert('Account Created! You Are Now Logged In', 'success', 'growl-top-right')
+          FlowRouter.go('/home')
+        }
+      })
     }
-    var passControl = Meteor.myAuthFuncs.isPasswordValid(password)
-    console.log(passControl.isErr + ' -- ' + passControl.msg)
-    if (passControl.isErr) {
-      console.log(passControl.msg)
-      return
-    }
-    if (!Meteor.myAuthFuncs.isEmailValid(email)) {
-      console.log('Email Not Valid')
-      return
-    }
-    Accounts.createUser({
-      username: username,
-      email: email,
-      password: password
-    }, function (error) {
-      if (error) {
-        console.log(error.reason)
-      } else {
-        Meteor.dbProfile.createProfile()
-        FlowRouter.go('/home')
-      }
-    })
+    return false // prevent submit
   }
 })
