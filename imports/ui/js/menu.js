@@ -4,9 +4,6 @@ import { Template } from 'meteor/templating'
 import '../html/menu.html'
 
 Template.menu.helpers({
-  logined () {
-    return (Meteor.userId() != null)
-  }
 })
 
 Template.menu.events({
@@ -14,6 +11,5 @@ Template.menu.events({
     event.preventDefault()
     Meteor.logout()
     FlowRouter.go('/')
-    // alert(Meteor.userId());
   }
 })
