@@ -21,6 +21,24 @@ FlowRouter.route('/profile/', {
   }
 })
 
+FlowRouter.route('/profile/:id', {
+  action: function (params, queryParams) {
+    BlazeLayout.render('main', {
+      content: 'profileWithId',
+      params: params
+    })
+  }
+})
+
+FlowRouter.route('/profile/edit/:id', {
+  action: function (params, queryParams) {
+    BlazeLayout.render('main', {
+      content: 'editprofile',
+      params: params
+    })
+  }
+})
+
 FlowRouter.route('/login/', {
   action: function () {
     BlazeLayout.render('main', {content: 'login'})
