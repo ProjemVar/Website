@@ -1,38 +1,37 @@
 import { Meteor } from 'meteor/meteor'
 import { FlowRouter } from 'meteor/kadira:flow-router'
 import { Template } from 'meteor/templating'
-import { ReactiveVar } from 'meteor/reactive-var'
+import { Bert } from 'meteor/themeteorchef:bert'
 import '../html/login.html'
 
 Template.login.onCreated(function loginOnCreated () {
   if (Meteor.userId() !== null) {
     FlowRouter.go('/home')
   }
-  this.errorMessage = new ReactiveVar('')
 })
 
 Template.login.helpers({
-  message () {
-    return Template.instance().errorMessage.get()
-  },
-  token () {
-    return Meteor.userId()
-  }
 })
 
 Template.login.events({
-  'submit form' (event, instance) {
-    event.preventDefault()
-    let username = event.target.username.value
-    let password = event.target.password.value
-    // var username = $('[name=username]').val()
-    // var password = $('[name=password]').val()
-    Meteor.loginWithPassword(username, password, function (error) {
-      if (error) {
-        instance.errorMessage.set(error.reason)
-      } else {
-        FlowRouter.go('/home')
-      }
-    })
+  'submit .form-signin': function (event) {
+    var email = Meteor.myAuthFuncs.trimInput(event.target.email.value)
+    var password = Meteor.myAuthFuncs.trimInput(event.target.password.value)
+    if (Meteor.myAuthFuncs.isNotEmpty(email) &&
+        Meteor.myAuthFuncs.isNotEmpty(password) &&
+        Meteor.myAuthFuncs.isEmail(email) &&
+        Meteor.myAuthFuncs.isValidPassword(password)) {
+        // do stuff
+      Meteor.loginWithPassword(email, password, function (err) {
+        if (err) {
+          Bert.alert(err.reason, 'danger', 'growl-top-right')
+          return false
+        } else {
+          FlowRouter.go('/home')
+          Bert.alert('You are now logged in', 'success', 'growl-top-right')
+        }
+      })
+    }
+    return false // Prevent submit
   }
 })

@@ -1,20 +1,21 @@
 <template name="login">
-	<div class="row">
-		<div class="col-sm-offset-4 col-sm-4">
-		<form>
-			<div class="form-group">
-				<label for="username">Username Or Email :</label>
-				<input class="form-control input-sm" name="username" type="text" id="username"/>
-				<label for="password">Password :</label>
-				<input class="form-control input-sm" name="password" type="password" id="password" />
+	{{#if currentUser }}
+			<h3 class="black">You are logged in. return <a href="/projects">home</a></h3>
+	{{else}}
+		<div class="row">
+			<div class="col-sm-offset-4 col-sm-4">
+				<form class="form-signin">
+					<h2>Account Login</h2>
+					<div class="form-group">
+						<label for="email">Email :</label>
+						<input class="form-control input-sm" name="email" type="text"/>
+						<label for="password">Password :</label>
+						<input class="form-control input-sm" name="password" type="password"/>
+					</div>
+					<input class="form-control btn-primary" type="submit" value="Login"/>
+					<p>No Account? <a href="/register">Create Account</a></p>
+				</form>
 			</div>
-			<input class="form-control btn-primary" type="submit" value="login"/>
-		</form>
-		{{#if message != null}}
-		<div class="alert alert-danger">
-  		<strong>{{message}}</strong>
 		</div>
-		{{/if}}
-		</div>
-	</div>
+	{{/if}}
 </template>
