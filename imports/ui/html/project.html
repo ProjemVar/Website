@@ -32,8 +32,24 @@
 
 <template name="showproject">
   <h2>Naber showing project {{ params.id }} {{ getId }}</h2>
+  <h3>Project Name: {{ project.projectName }}</h3>
+  <h3>Project Desc: {{ project.projectDesc }}</h3>
+  <h3>Project Content: {{ project.projectContent }}</h3>
 </template>
 
 <template name="editproject">
-  <h2>Naber editing project {{ params.id }} {{ getId }}</h2>
+  {{#if currentUser }}
+    <h2>Naber editing project {{ params.id }} {{ getId }}</h2>
+    <div class="form-group">
+      <form class="project-update-post">
+        <label for="Name">Name : </label>
+        <input type="text" class="form-control" name="projectName" value="{{ project.projectName }}"/>
+        <label for="desc">Description</label>
+        <input type="text" class="form-control" name="projectDesc" value="{{ project.projectDesc }}"/>
+        <label for="content">Content</label>
+        <textarea name="projectContent" class="form-control" value="{{ project.projectContent }}"></textarea>
+        <button class="pull-right btn btn-success" type="submit" id="project-update">Update Project</button>
+      </form>
+    </div>
+  {{/if}}
 </template>
