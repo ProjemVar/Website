@@ -1,26 +1,28 @@
 <template name="project">
   <button class="btn btn-primary" data-toggle="collapse" data-target="#newProjectDiv">New Project</button>
   <div id="newProjectDiv" class="collapse form-group">
-    <label for="Name">Name : </label>
-    <input type="text" class="form-control" id="cName" name="cName" />
-    <label for="desc">Description</label>
-    <input type="text" class="form-control" id="cDesc" name="cDesc" />
-    <label for="content">Content</label>
-    <textarea id="cContent" name="cContent" class="form-control"></textarea>
-    <button class="pull-right btn btn-success" id="create">Create</button>
+    <form class="project-post">
+      <label for="Name">Name : </label>
+      <input type="text" class="form-control" name="projectName" />
+      <label for="desc">Description</label>
+      <input type="text" class="form-control" name="projectDesc" />
+      <label for="content">Content</label>
+      <textarea id="cContent" name="projectContent" class="form-control"></textarea>
+      <button class="pull-right btn btn-success" type="submit" id="project-create">Create Project</button>
+    </form>
   </div>
-  <h1>My Projects</h1>
-  {{#each getUserProjects }}
-  <div class="panel panel-info">
-    <div class="panel-heading clearfix">
-     <h4 class="panel-title pull-left" style="padding-top: 7.5px;"><a href="/project/{{_id}}">{{Name}}</a></h4>
-     <div class="btn-group pull-right">
+  <h1>Projects</h1>
+  {{#each getAllProjects }}
+    <div class="panel panel-info">
+      <div class="panel-heading clearfix">
+       <h4 class="panel-title pull-left" style="padding-top: 7.5px;"><a href="/project/{{_id}}">{{projectName}}</a></h4>
+       <div class="btn-group pull-right">
          <a href="/project/edit/{{_id}}"  class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></a>
          <span class="glyphicon glyphicon-trash btn btn-danger" id="deleteProject" ></span>
-     </div>
-   </div>
-    <div class="panel-body">{{Description}}</div>
-  </div>
+       </div>
+      </div>
+      <div class="panel-body">{{projectDesc}}</div>
+    </div>
   {{/each}}
 
 </template>
