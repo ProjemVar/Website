@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor'
 import { Template } from 'meteor/templating'
+import { FlowRouter } from 'meteor/kadira:flow-router'
 import { Bert } from 'meteor/themeteorchef:bert'
 import { Projects } from '../../../lib/collections/collections.js'
 import '../html/project.html'
@@ -37,5 +38,19 @@ Template.project.events({
   'click #delete-project': function (event) {
     Meteor.call('removeProject', this._id)
     Bert.alert('Your Project Was Deleted', 'success', 'growl-top-right')
+  }
+})
+
+Template.showproject.helpers({
+  getId: function () {
+    var id = FlowRouter.getParam('id')
+    return id
+  }
+})
+
+Template.editproject.helpers({
+  getId: function () {
+    var id = FlowRouter.getParam('id')
+    return id
   }
 })
