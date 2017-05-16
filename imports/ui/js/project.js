@@ -24,7 +24,7 @@ Template.project.events({
         Meteor.myAuthFuncs.isNotEmpty(projectDesc) &&
         Meteor.myAuthFuncs.isNotEmpty(projectContent)) {
       // do stuff
-      Meteor.call('addProjects', projectName, projectDesc, projectContent)
+      Meteor.call('addProject', projectName, projectDesc, projectContent)
       event.target.projectName.value = ''
       event.target.projectDesc.value = ''
       event.target.projectContent.value = ''
@@ -33,5 +33,9 @@ Template.project.events({
       Bert.alert('something went wrong', 'danger', 'growl-top-right')
     }
     return false // Prevent submit
+  },
+  'click #delete-project': function (event) {
+    Meteor.call('removeProject', this._id)
+    Bert.alert('Your Project Was Deleted', 'success', 'growl-top-right')
   }
 })
