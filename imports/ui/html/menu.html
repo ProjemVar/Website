@@ -3,9 +3,11 @@
     <a href="/">
       <button class="btn btn-md btn-primary">Home</button>
     </a>
-    <a href="/admin">
-      <button class="btn btn-md btn-primary">Admin</button>
-    </a>
+    {{#if isAdmin}}
+      <a href="/admin">
+        <button class="btn btn-md btn-primary">Admin</button>
+      </a>
+    {{/if}}
     <a href="/projects/">
       <button class="btn btn-md btn-warning">Projects</button>
     </a>

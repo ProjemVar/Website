@@ -5,6 +5,13 @@ import { Bert } from 'meteor/themeteorchef:bert'
 import '../html/menu.html'
 
 Template.menu.helpers({
+  isAdmin () {
+    var username = Meteor.user().username
+    if (username === 'admin') {
+      return true
+    }
+    return false
+  },
   getId: function () {
     return Meteor.userId()
   }
