@@ -61,6 +61,15 @@ Template.editproject.helpers({
   project: function () {
     var id = FlowRouter.getParam('id')
     return Projects.findOne({_id: id})
+  },
+  isAdminOrYourself () {
+    var username = Meteor.user().username
+    let id = FlowRouter.getParam('id')
+    let project = Projects.findOne({_id: id})
+    if (username === 'admin' || username === project.author) {
+      return true
+    }
+    return false
   }
 })
 
