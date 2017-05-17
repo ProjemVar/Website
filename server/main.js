@@ -1,7 +1,5 @@
-import { Meteor } from 'meteor/meteor';
-import '../imports/api/db-profile.js';
-import '../imports/api/db-project.js';
+import { Meteor } from 'meteor/meteor'
 
 Meteor.startup(() => {
 
-});
+})
