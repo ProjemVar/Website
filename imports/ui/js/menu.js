@@ -5,6 +5,9 @@ import { Bert } from 'meteor/themeteorchef:bert'
 import '../html/menu.html'
 
 Template.menu.helpers({
+  getId: function () {
+    return Meteor.userId()
+  }
 })
 
 Template.menu.events({
