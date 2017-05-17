@@ -6,7 +6,7 @@ import '../html/login.html'
 
 Template.login.onCreated(function loginOnCreated () {
   if (Meteor.userId() !== null) {
-    FlowRouter.go('/home')
+    FlowRouter.go('/')
   }
 })
 
@@ -27,7 +27,7 @@ Template.login.events({
           Bert.alert(err.reason, 'danger', 'growl-top-right')
           return false
         } else {
-          FlowRouter.go('/home')
+          FlowRouter.go('/')
           Bert.alert('You are now logged in', 'success', 'growl-top-right')
         }
       })
