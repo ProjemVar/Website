@@ -15,12 +15,6 @@ FlowRouter.route('/home/', {
   }
 })
 
-FlowRouter.route('/profile/', {
-  action: function () {
-    BlazeLayout.render('main', {content: 'profile'})
-  }
-})
-
 FlowRouter.route('/profile/:id', {
   action: function (params, queryParams) {
     BlazeLayout.render('main', {
@@ -51,9 +45,9 @@ FlowRouter.route('/register/', {
   }
 })
 // Project begin
-FlowRouter.route('/project/', {
+FlowRouter.route('/projects/', {
   action: function () {
-    BlazeLayout.render('main', {content: 'project'})
+    BlazeLayout.render('main', {content: 'projects'})
   }
 })
 
