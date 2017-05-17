@@ -2,12 +2,12 @@ import { Meteor } from 'meteor/meteor'
 import { FlowRouter } from 'meteor/kadira:flow-router'
 import { Template } from 'meteor/templating'
 import { Bert } from 'meteor/themeteorchef:bert'
-import '../../api/db-profile.js'
 import '../html/profile.html'
 
-Template.profile.helpers({
+Template.profileWithId.helpers({
   getUserInfo () {
-    var user = Meteor.user()
+    let id = FlowRouter.getParam('id')
+    let user = Meteor.users.findOne({_id: id})
     return {
       id: user._id,
       username: user.username,
@@ -15,29 +15,20 @@ Template.profile.helpers({
     }
   }
 })
-Template.profile.events({
-  'click #update' (event, instance) {
-    event.preventDefault()
-    let name = event.target.name.value
-    let surname = event.target.surname.value
-    Meteor.dbProfile.setProfile(name, surname)
-    alert('Update Done')
-    // NO ERROR CONTROL FOR NOW
-  }
-})
+Template.profileWithId.events({})
 
 Template.editprofile.helpers({
   getId: function () {
-    var id = FlowRouter.getParam('id')
+    let id = FlowRouter.getParam('id')
     return id
   },
   profile: function () {
-    var id = FlowRouter.getParam('id')
-    return Meteor.users.findOne({_id: id})
-  },
-  userEmail: function () {
-    var id = FlowRouter.getParam('id')
-    return Meteor.users.findOne({_id: id}).emails[0].address
+    let id = FlowRouter.getParam('id')
+    let user = Meteor.users.findOne({_id: id})
+    return {
+      username: user.username,
+      email: user.emails[0].address
+    }
   }
 })
 

@@ -1,12 +1,14 @@
-<template name="profile">
-  <div class="well row row-eq-height">
-    <div class="col-sm-6">
-      <h1>Profile Info</h1>
-      <p>Username : <strong>{{getUserInfo.username}}</strong></p>
-      <p>Email : <strong>{{getUserInfo.email}}</strong></p>
-      <a href="/profile/edit/{{getUserInfo.id}}"  class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></a>
+<template name="profileWithId">
+    <h2>Naber profile page with id {{ params.id }}</h2>
+    <div class="well row row-eq-height">
+      <div class="col-sm-6">
+        <h1>Profile Info</h1>
+        <p>Id: {{getUserInfo.id}}</p>
+        <p>Username : <strong>{{getUserInfo.username}}</strong></p>
+        <p>Email : <strong>{{getUserInfo.email}}</strong></p>
+        <a href="/profile/edit/{{getUserInfo.id}}"  class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></a>
+      </div>
     </div>
-  </div>
 </template>
 
 <template name="editprofile">
@@ -15,7 +17,7 @@
       <h1>Profile Info</h1>
       <form class="profile-update-post">
         <label for="email">Email : </label>
-        <input class="form-control" name="email" type="text" value="{{userEmail}}"/>
+        <input class="form-control" name="email" type="text" value="{{profile.email}}"/>
         <label for="username">Username : </label>
         <input class="form-control" name="username" type="text" value="{{profile.username}}"/>
         <label for="password">Old Password : </label>
@@ -27,8 +29,4 @@
         <input class="form-control btn btn-primary" type="submit" value="Update Profile" />
       </form>
     </div>
-</template>
-
-<template name="profileWithId">
-    <h2>Naber profile page with id {{ params.id }}</h2>
 </template>
