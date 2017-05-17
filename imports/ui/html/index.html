@@ -1,31 +1,35 @@
 <template name="index">
   <!-- I think there is admin page -->
-  <div class="row">
-    <div class="col-sm-9">
-      <input type="text" class="form-control"/>
+  {{#if currentUser }}
+    <div class="row">
+      <div class="col-sm-9">
+        <input type="text" class="form-control"/>
+      </div>
+      <div class="col-sm-3">
+        <button class="form-control btn btn-primary">Search</button>
+      </div>
     </div>
-    <div class="col-sm-3">
-      <button class="form-control btn btn-primary">Search</button>
-    </div>
-  </div>
-  <div class="well">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>UserId</th>
-          <th>Username</th>
-          <th>Email</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each allProfiles}}
+    <div class="well">
+      <table class="table table-striped">
+        <thead>
           <tr>
-            <td>{{ _id }}</td>
-            <td><a href="/profile/{{_id}}">{{ username }}</a></td>
-            <td>{{ userEmail }}</td>
+            <th>UserId</th>
+            <th>Username</th>
+            <th>Email</th>
           </tr>
-        {{/each}}
-      </tbody>
-    </table>
-  </div>
+        </thead>
+        <tbody>
+          {{#each allProfiles}}
+            <tr>
+              <td>{{ _id }}</td>
+              <td><a href="/profile/{{_id}}">{{ username }}</a></td>
+              <td>{{ userEmail }}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  {{else}}
+    <h2>Please <a href="/login/">login</a></h2>
+  {{/if}}
 </template>
