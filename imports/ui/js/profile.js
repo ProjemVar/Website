@@ -30,6 +30,15 @@ Template.editprofile.helpers({
       username: user.username,
       email: user.emails[0].address
     }
+  },
+  isAdminOrYourself () {
+    var username = Meteor.user().username
+    let id = FlowRouter.getParam('id')
+    let user = Meteor.users.findOne({_id: id})
+    if (username === 'admin' || username === user.username) {
+      return true
+    }
+    return false
   }
 })
 

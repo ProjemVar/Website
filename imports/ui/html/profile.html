@@ -1,4 +1,5 @@
 <template name="profileWithId">
+  {{#if currentUser }}
     <h2>Naber profile page with id {{ params.id }}</h2>
     <div class="well row row-eq-height">
       <div class="col-sm-6">
@@ -9,25 +10,36 @@
         <a href="/profile/edit/{{getUserInfo.id}}"  class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></a>
       </div>
     </div>
+  {{else}}
+    <h2>Please <a href="/login/">login</a></h2>
+  {{/if}}
 </template>
 
 <template name="editprofile">
-    <h2>Naber editing profile {{ params.id }}</h2>
-    <div class="col-sm-6 form-group ">
-      <h1>Profile Info </h1>
-      <h2>Just Changing username and password</h2>
-      <form class="profile-update-post">
-        <label for="email">Email : </label>
-        <input class="form-control" name="email" type="text" value="{{profile.email}}"/>
-        <label for="username">Username : </label>
-        <input class="form-control" name="username" type="text" value="{{profile.username}}"/>
-        <label for="password">Old Password : </label>
-        <input class="form-control" name="oldpassword" type="password"/>
-        <label for="password">New Password : </label>
-        <input class="form-control" name="password" type="password"/>
-        <label for="repassword">Re-Password : </label>
-        <input class="form-control" name="repassword" type="password"/>
-        <input class="form-control btn btn-primary" type="submit" value="Update Profile" />
-      </form>
-    </div>
+  {{#if currentUser }}
+    {{#if isAdminOrYourself }}
+      <h2>Naber editing profile {{ params.id }}</h2>
+      <div class="col-sm-6 form-group ">
+        <h1>Profile Info </h1>
+        <h2>Just Changing username and password</h2>
+        <form class="profile-update-post">
+          <label for="email">Email : </label>
+          <input class="form-control" name="email" type="text" value="{{profile.email}}"/>
+          <label for="username">Username : </label>
+          <input class="form-control" name="username" type="text" value="{{profile.username}}"/>
+          <label for="password">Old Password : </label>
+          <input class="form-control" name="oldpassword" type="password"/>
+          <label for="password">New Password : </label>
+          <input class="form-control" name="password" type="password"/>
+          <label for="repassword">Re-Password : </label>
+          <input class="form-control" name="repassword" type="password"/>
+          <input class="form-control btn btn-primary" type="submit" value="Update Profile" />
+        </form>
+      </div>
+    {{else}}
+      <h2>Your not admin or this person! Fuck off.</h2>
+    {{/if}}
+  {{else}}
+    <h2>Please <a href="/login/">login</a></h2>
+  {{/if}}
 </template>
