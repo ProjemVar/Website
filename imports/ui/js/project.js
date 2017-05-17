@@ -5,7 +5,7 @@ import { Bert } from 'meteor/themeteorchef:bert'
 import { Projects } from '../../../lib/collections/collections.js'
 import '../html/project.html'
 
-Template.project.helpers({
+Template.projects.helpers({
   getUserProjects () {
     console.log(Meteor.userId())
     return Projects.find({userId: Meteor.userId()}, {sort: {createdAt: -1}})
@@ -15,7 +15,7 @@ Template.project.helpers({
   }
 })
 
-Template.project.events({
+Template.projects.events({
   'submit .project-post': function (event) {
     let projectName = Meteor.myAuthFuncs.trimInput(event.target.projectName.value)
     let projectDesc = Meteor.myAuthFuncs.trimInput(event.target.projectDesc.value)
