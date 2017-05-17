@@ -2,14 +2,14 @@ import { FlowRouter } from 'meteor/kadira:flow-router'
 import { BlazeLayout } from 'meteor/kadira:blaze-layout'
 import '../imports/ui/js/main.js'
 
-FlowRouter.route('/', {
+FlowRouter.route('/admin', {
   action: function () {
     // BlazeLayout.render("main", {content : "index",topmenu : "indexmenu"});
     BlazeLayout.render('main', {content: 'index'})
   }
 })
 
-FlowRouter.route('/home/', {
+FlowRouter.route('/', {
   action: function () {
     BlazeLayout.render('main', {content: 'home'})
   }
