@@ -30,5 +30,8 @@ Template.index.events({
   'click #delete-user': function (event) {
     Meteor.call('removeUser', this._id)
     Bert.alert('User Was Deleted', 'success', 'growl-top-right')
+  },
+  'click #getBackup': function (event) {
+    console.log('BackUp Completed!')
   }
 })
