@@ -1,16 +1,16 @@
 <template name="menu">
+  {{#if isAdmin}}
+    <a href="/admin">
+      <button class="btn btn-md btn-primary">Admin</button>
+    </a>
+  {{/if}}
+  <a href="/">
+    <button class="btn btn-md btn-primary">Home</button>
+  </a>
+  <a href="/projects/">
+    <button class="btn btn-md btn-warning">Projects</button>
+  </a>
   {{#if currentUser }}
-    <a href="/">
-      <button class="btn btn-md btn-primary">Home</button>
-    </a>
-    {{#if isAdmin}}
-      <a href="/admin">
-        <button class="btn btn-md btn-primary">Admin</button>
-      </a>
-    {{/if}}
-    <a href="/projects/">
-      <button class="btn btn-md btn-warning">Projects</button>
-    </a>
     <a href="/profile/{{getId}}">
       <button class="btn btn-md btn-success">My Profile</button>
     </a>

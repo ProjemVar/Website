@@ -6,11 +6,18 @@ import '../html/menu.html'
 
 Template.menu.helpers({
   isAdmin () {
-    var username = Meteor.user().username
-    if (username === 'admin') {
-      return true
+    let person = Meteor.user()
+    if (!person) {
+      console.log('Anonymus')
+      return false
+    } else {
+      console.log(person.username)
+      if (person.username === 'admin') {
+        return true
+      } else {
+        return false
+      }
     }
-    return false
   },
   getId: function () {
     return Meteor.userId()
