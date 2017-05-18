@@ -6,11 +6,9 @@ import { Projects } from '../../../lib/collections/collections.js'
 import '../html/project.html'
 
 Template.projects.helpers({
-  getUserProjects () {
-    console.log(Meteor.userId())
-    return Projects.find({userId: Meteor.userId()}, {sort: {createdAt: -1}})
-  },
   getAllProjects () {
+    console.log('Runned getAllProjects helpers')
+    console.log(Projects.find({}, {sort: {createdAt: -1}}))
     return Projects.find({}, {sort: {createdAt: -1}})
   }
 })
