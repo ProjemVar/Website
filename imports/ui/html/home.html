@@ -1,3 +1,8 @@
 <template name="home">
-  Welcome To Home, Please <a href="/login">login</a>
+  Welcome To Home,
+  {{#if currentUser }}
+    {{ getUsername }}
+  {{else}}
+    Please<a href="/login">login</a>
+  {{/if}}
 </template>
