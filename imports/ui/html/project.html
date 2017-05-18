@@ -1,18 +1,20 @@
 <template name="projects">
-  <!-- Create Project -->
-  <button class="btn btn-primary" data-toggle="collapse" data-target="#newProjectDiv">New Project</button>
-  <div id="newProjectDiv" class="collapse form-group">
-    <form class="project-post">
-      <label for="Name">Name : </label>
-      <input type="text" class="form-control" name="projectName" />
-      <label for="desc">Description</label>
-      <input type="text" class="form-control" name="projectDesc" />
-      <label for="content">Content</label>
-      <textarea id="cContent" name="projectContent" class="form-control"></textarea>
-      <button class="pull-right btn btn-success" type="submit" id="project-create">Create Project</button>
-    </form>
-  </div>
-  <!-- End Create Project -->
+  {{#if currentUser }}
+    <!-- Create Project -->
+    <button class="btn btn-primary" data-toggle="collapse" data-target="#newProjectDiv">New Project</button>
+    <div id="newProjectDiv" class="collapse form-group">
+      <form class="project-post">
+        <label for="Name">Name : </label>
+        <input type="text" class="form-control" name="projectName" />
+        <label for="desc">Description</label>
+        <input type="text" class="form-control" name="projectDesc" />
+        <label for="content">Content</label>
+        <textarea id="cContent" name="projectContent" class="form-control"></textarea>
+        <button class="pull-right btn btn-success" type="submit" id="project-create">Create Project</button>
+      </form>
+    </div>
+    <!-- End Create Project -->
+  {{/if}}
   <!-- All Projects -->
   <h1>Projects</h1>
   {{#each getAllProjects }}
