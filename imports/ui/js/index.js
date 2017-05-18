@@ -5,11 +5,18 @@ import '../html/index.html'
 
 Template.index.helpers({
   isAdmin () {
-    var username = Meteor.user().username
-    if (username === 'admin') {
-      return true
+    let person = Meteor.user()
+    if (!person) {
+      console.log('Anonymus')
+      return false
+    } else {
+      console.log(person.username)
+      if (person.username === 'admin') {
+        return true
+      } else {
+        return false
+      }
     }
-    return false
   },
   allUsers () {
     return Meteor.users.find({})
