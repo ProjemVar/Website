@@ -10,6 +10,34 @@
         <a href="/profile/edit/{{getUserInfo.id}}"  class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></a>
       </div>
     </div>
+    <h1>My Projects</h1>
+    {{#each getUserProjects }}
+      <div class="panel panel-info">
+        <div class="panel-heading clearfix">
+         <h4 class="panel-title pull-left" style="padding-top: 7.5px;">
+           <a href="/project/{{_id}}">Author: {{ author }} | ProjectName: {{projectName}} | Date: {{date}}</a>
+         </h4>
+         <div class="btn-group pull-right">
+           <a href="/project/edit/{{_id}}"  class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></a>
+           <span class="glyphicon glyphicon-trash btn btn-danger" id="delete-project" ></span>
+         </div>
+        </div>
+        <div class="panel-body">
+          {{ projectDesc }}
+        </div>
+        <p style="float:right">
+          AwesomeScore: {{scores.awesomeScore}} |
+          NiceScore: {{scores.niceScore}} |
+          BadScore: {{scores.badScore}} |
+          ShitScore: {{scores.shitScore}}</p>
+        <br>
+        <!--
+        <p style="float:right">
+          Voted: {{voted}}
+        </p>
+        -->
+      </div>
+    {{/each}}
   {{else}}
     <h2>Please <a href="/login/">login</a></h2>
   {{/if}}

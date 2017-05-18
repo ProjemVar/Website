@@ -3,9 +3,15 @@ import { Accounts } from 'meteor/accounts-base'
 import { FlowRouter } from 'meteor/kadira:flow-router'
 import { Template } from 'meteor/templating'
 import { Bert } from 'meteor/themeteorchef:bert'
+import { Projects } from '../../../lib/collections/collections.js'
 import '../html/profile.html'
 
 Template.profileWithId.helpers({
+  getUserProjects () {
+    let id = FlowRouter.getParam('id')
+    console.log(id)
+    return Projects.find({userId: id}, {sort: {createdAt: -1}})
+  },
   getUserInfo () {
     let id = FlowRouter.getParam('id')
     let user = Meteor.users.findOne({_id: id})
