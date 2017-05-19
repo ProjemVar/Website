@@ -30,13 +30,29 @@
       </div>
       <div class="panel-body">
         {{ projectDesc }}
+        <div class="like-buttons-container">
+          <div>
+            <img src="/images/icons/love.png" class="small-face" id="loveFace" />
+            <span>{{scores.awesomeScore}}</span>
+          </div>
+          <div>
+            <img src="/images/icons/happy.png" class="small-face" id="happyFace"/>
+            <!--<img src="/images/icons/happy.png" class="small-face small-face-picked" id="happyFace"/>-->
+            <span>{{scores.niceScore}}</span>
+          </div>
+          <div>
+            <img src="/images/icons/sad.png" class="small-face" id="sadFace"/>
+            <span>{{scores.badScore}}</span>
+          </div>
+          <div>
+            <img src="/images/icons/cry.png" class="small-face" id="cryFace"/>
+            <span>{{scores.shitScore}}</span>
+          </div>
+        </div>
       </div>
-      <p style="float:right">
-        AwesomeScore: {{scores.awesomeScore}} |
-        NiceScore: {{scores.niceScore}} |
-        BadScore: {{scores.badScore}} |
-        ShitScore: {{scores.shitScore}}</p>
-      <br>
+
+
+
       <!--
       <p style="float:right">
         Voted: {{voted}}
@@ -48,19 +64,20 @@
 </template>
 
 <template name="showproject">
-  <h2>Naber showing project {{ params.id }} {{ getId }}</h2>
-  <h3>Project Name: {{ project.projectName }}</h3>
-  <h3>Project Desc: {{ project.projectDesc }}</h3>
-  <h3>Project Content:</h3>
-  {{#markdown}}
-    {{project.projectContent}}
-  {{/markdown}}
+  <!--<h2>Naber showing project {{ params.id }} {{ getId }}</h2>-->
+  <h1 class="page-header">{{ project.projectName }} <small>{{project.author}}</small></h1>
+  <p class="lead">{{ project.projectDesc }}</p>
+  <div class="well">
+    <p>
+      {{{project.projectContent}}}
+    </p>
+  </div>
 </template>
 
 <template name="editproject">
   {{#if currentUser }}
     {{#if isAdminOrYourself }}
-      <h2>Naber editing project {{ params.id }} {{ getId }}</h2>
+      <p>Editing project : <b class="bg-success">{{ params.id }} {{ getId }}</b></p>
       <div class="form-group">
         <form class="project-update-post">
           <label for="Name">Name : </label>
@@ -68,10 +85,11 @@
           <label for="desc">Description</label>
           <input type="text" class="form-control" name="projectDesc" value="{{ project.projectDesc }}"/>
           <label for="content">Content</label>
-          <textarea name="projectContent" class="form-control" value="{{ project.projectContent }}"></textarea>
+          <textarea name="projectContent" class="form-control" rows="20" cols="50" value="{{ project.projectContent }}"></textarea>
           <button class="pull-right btn btn-success" type="submit" id="project-update">Update Project</button>
         </form>
       </div>
+
     {{else}}
       <h2>Your not admin or this person! Fuck off.</h2>
     {{/if}}
