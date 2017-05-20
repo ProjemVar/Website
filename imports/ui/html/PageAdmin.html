@@ -1,0 +1,27 @@
+<template name="PageAdmin">
+  <!-- I think there is admin page -->
+  {{#if currentUser }}
+    {{#if isAdmin }}
+      <h2 class="page-header">Admin Page</h2>
+      <div class="row margin-tb-10">
+        <div class="col-sm-9">
+          <input type="text" class="form-control"/>
+        </div>
+        <div class="col-sm-3">
+          <button class="form-control btn btn-primary"><span class="glyphicon glyphicon-search">Search</span></button>
+        </div>
+      </div>
+      <div class="well">
+        {{> users }}
+      </div>
+      <div class="well">
+        {{> projects }}
+      </div>
+      <button class="btn btn-md btn-primary" id="getBackup">Get BackUp Users And Projects</button>
+    {{else}}
+      <h2>Your not admin! Fuck off.</h2>
+    {{/if}}
+  {{else}}
+    <h2>Please <a href="/login/">login</a></h2>
+  {{/if}}
+</template>
