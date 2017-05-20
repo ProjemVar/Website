@@ -5,7 +5,7 @@ import { Projects } from '../../../../lib/collections/collections.js'
 import '../../html/pages/PageHome.html'
 
 Template.PageHome.onCreated(function homeOnCreated () {
-  this.searchQuery = new ReactiveVar("");
+  this.searchQuery = new ReactiveVar('')
 })
 
 Template.PageHome.helpers({
@@ -14,22 +14,27 @@ Template.PageHome.helpers({
   },
   getBestorSearchedProjects: function () {
     let searchQ = Template.instance().searchQuery.get()
-    if(searchQ.length > 0)
+    if (searchQ.length > 0) {
       return Projects.find(
         {
-          $or : [
-            {projectDesc : {$regex : searchQ, $options : 'i'}},
-            {projectName : {$regex : searchQ, $options : 'i'}}
+          $or: [
+            {projectDesc: {$regex: searchQ, $options: 'i'}},
+            {projectName: {$regex: searchQ, $options: 'i'}}
           ]
         },
         { sort: {'totalScore': -1} }
       )
+    }
     return Projects.find({}, { sort: {'totalScore': -1} })
   }
 })
 Template.PageHome.events({
-  'click #search-project' : function(event,instance){
-    let searchQ = $("#search-project-query").val()
+  'keydown #search-project-query': function (event, instance) {
+    let searchQ = $('#search-project-query').val()
+    instance.searchQuery.set(searchQ)
+  },
+  'click #search-project': function (event, instance) {
+    let searchQ = $('#search-project-query').val()
     instance.searchQuery.set(searchQ)
   }
 })
