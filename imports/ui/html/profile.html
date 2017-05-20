@@ -21,12 +21,19 @@
     <div class="panel panel-info">
       <div class="panel-heading clearfix">
        <h4 class="panel-title pull-left" style="padding-top: 7.5px;">
-         <a href="/project/{{_id}}"><h3>{{projectName}} <small>{{author}}</small></h3></a>
+         <a href="/project/{{_id}}">
+           <h3>{{projectName}}</h3>
+         </a>
+         <a href="/profile/{{userId}}">
+           <small>{{author}}</small>
+         </a>
        </h4>
+       {{#if isAdminOrYourself }}
        <div class="btn-group pull-right">
          <a href="/project/edit/{{_id}}"  class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></a>
          <a class="btn btn-danger" id="delete-project" ><span class="glyphicon glyphicon-trash"></span></a>
        </div>
+       {{/if}}
       </div>
       <div class="panel-body">
         {{ projectDesc }}
