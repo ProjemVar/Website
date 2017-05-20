@@ -27,3 +27,10 @@ a {
   width:30px;
   text-align:center;
 }
+.margin-10{
+  margin: 10px;
+}
+.margin-tb-10{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

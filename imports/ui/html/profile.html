@@ -1,42 +1,59 @@
 <template name="profileWithId">
   {{#if currentUser }}
-    <h2>Naber profile page with id {{ params.id }}</h2>
-    <div class="well row row-eq-height">
-      <div class="col-sm-6">
-        <h1>Profile Info</h1>
-        <p>Id: {{getUserInfo.id}}</p>
-        <p>Username : <strong>{{getUserInfo.username}}</strong></p>
-        <p>Email : <strong>{{getUserInfo.email}}</strong></p>
-        <a href="/profile/edit/{{getUserInfo.id}}"  class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></a>
-      </div>
+  <div class="row">
+      <div class="col-sm-4 well col-sm-offset-4">
+        <dl>
+          <dt>Id</dt>
+          <dd>- {{getUserInfo.id}}</dd>
+          <dt>Username</dt>
+          <dd>- {{getUserInfo.username}}</dd>
+          <dt>E-mail</dt>
+          <dd>- {{getUserInfo.email}}</dd>
+        </dl>
+        <a href="/profile/edit/{{getUserInfo.id}}"  class="btn btn-info full-width btn-block">
+            <span class="glyphicon glyphicon-edit"></span>
+            Edit
+        </a>
     </div>
+  </div>
     <h1>My Projects</h1>
     {{#each getUserProjects }}
-      <div class="panel panel-info">
-        <div class="panel-heading clearfix">
-         <h4 class="panel-title pull-left" style="padding-top: 7.5px;">
-           <a href="/project/{{_id}}">Author: {{ author }} | ProjectName: {{projectName}} | Date: {{date}}</a>
-         </h4>
-         <div class="btn-group pull-right">
-           <a href="/project/edit/{{_id}}"  class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></a>
-           <span class="glyphicon glyphicon-trash btn btn-danger" id="delete-project" ></span>
-         </div>
-        </div>
-        <div class="panel-body">
-          {{ projectDesc }}
-        </div>
-        <p style="float:right">
-          AwesomeScore: {{scores.awesomeScore}} |
-          NiceScore: {{scores.niceScore}} |
-          BadScore: {{scores.badScore}} |
-          ShitScore: {{scores.shitScore}}</p>
-        <br>
-        <!--
-        <p style="float:right">
-          Voted: {{voted}}
-        </p>
-        -->
+    <div class="panel panel-info">
+      <div class="panel-heading clearfix">
+       <h4 class="panel-title pull-left" style="padding-top: 7.5px;">
+         <a href="/project/{{_id}}"><h3>{{projectName}} <small>{{author}}</small></h3></a>
+       </h4>
+       <div class="btn-group pull-right">
+         <a href="/project/edit/{{_id}}"  class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></a>
+         <a class="btn btn-danger" id="delete-project" ><span class="glyphicon glyphicon-trash"></span></a>
+       </div>
       </div>
+      <div class="panel-body">
+        {{ projectDesc }}
+        <div class="like-buttons-container">
+          <div>
+            <img src="/images/icons/love.png" class="small-face" id="loveFace" />
+            <span>{{scores.awesomeScore}}</span>
+          </div>
+          <div>
+            <img src="/images/icons/happy.png" class="small-face" id="happyFace"/>
+            <!--<img src="/images/icons/happy.png" class="small-face small-face-picked" id="happyFace"/>-->
+            <span>{{scores.niceScore}}</span>
+          </div>
+          <div>
+            <img src="/images/icons/sad.png" class="small-face" id="sadFace"/>
+            <span>{{scores.badScore}}</span>
+          </div>
+          <div>
+            <img src="/images/icons/cry.png" class="small-face" id="cryFace"/>
+            <span>{{scores.shitScore}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="panel-footer">
+        {{date}}
+      </div>
+    </div>
     {{/each}}
   {{else}}
     <h2>Please <a href="/login/">login</a></h2>
@@ -46,15 +63,14 @@
 <template name="editprofile">
   {{#if currentUser }}
     {{#if isAdminOrYourself }}
-      <h2>Naber editing profile {{ params.id }}</h2>
-      <div class="col-sm-6 form-group ">
-        <h1>Profile Info </h1>
-        <h2>Just Changing username and password</h2>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 form-group ">
+        <h3>Profile Update <small><span class="bg-info">{{ params.id }}</span></small></h3>
         <form class="profile-update-post">
           <label for="email">Email : </label>
           <input class="form-control" name="email" type="text" value="{{profile.email}}"/>
           <label for="username">Username : </label>
-          <input class="form-control" name="username" type="text" value="{{profile.username}}"/>
+          <input class="form-control" name="username" type="text" value="{{profile.username}}" disabled/>
           <label for="password">Old Password : </label>
           <input class="form-control" name="oldpassword" type="password"/>
           <label for="password">New Password : </label>
@@ -63,7 +79,9 @@
           <input class="form-control" name="repassword" type="password"/>
           <input class="form-control btn btn-primary" type="submit" value="Update Profile" />
         </form>
+
       </div>
+    </div>
     {{else}}
       <h2>Your not admin or this person! Fuck off.</h2>
     {{/if}}
