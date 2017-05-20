@@ -46,7 +46,9 @@ Template.projects.events({
     Meteor.call('removeProject', this._id)
     Bert.alert('Your Project Was Deleted', 'success', 'growl-top-right')
   },
-  'click #awesomeFace': function (event) {
+  'click #vote' : function(event){
+    if(event.target.nodeName != "IMG")
+      return
     let project = Projects.findOne({_id: this._id})
     let votedUser = Meteor.user().username
     console.log(project.voted)
@@ -58,62 +60,9 @@ Template.projects.events({
         Bert.alert('You cannot vote twice', 'danger', 'growl-top-right')
       } else {
         Meteor.call('AddUsernameInVoted', project._id, votedUser)
-        Meteor.call('IncUserScore', project.userId, 'awesomeScore')
-        Meteor.call('IncProjectScore', project._id, 'awesomeScore')
-        Bert.alert('Your Vote Was Placed', 'success', 'growl-top-right')
-      }
-    }
-  },
-  'click #niceFace': function (event) {
-    let project = Projects.findOne({_id: this._id})
-    let votedUser = Meteor.user().username
-    console.log(project.voted)
-    console.log(votedUser)
-    if (votedUser === project.author) {
-      Bert.alert('You cannot vote for your own project', 'danger', 'growl-top-right')
-    } else {
-      if (project.voted.indexOf(votedUser) > -1) {
-        Bert.alert('You cannot vote twice', 'danger', 'growl-top-right')
-      } else {
-        Meteor.call('AddUsernameInVoted', project._id, votedUser)
-        Meteor.call('IncUserScore', project.userId, 'niceScore')
-        Meteor.call('IncProjectScore', project._id, 'niceScore')
-        Bert.alert('Your Vote Was Placed', 'success', 'growl-top-right')
-      }
-    }
-  },
-  'click #badFace': function (event) {
-    let project = Projects.findOne({_id: this._id})
-    let votedUser = Meteor.user().username
-    console.log(project.voted)
-    console.log(votedUser)
-    if (votedUser === project.author) {
-      Bert.alert('You cannot vote for your own project', 'danger', 'growl-top-right')
-    } else {
-      if (project.voted.indexOf(votedUser) > -1) {
-        Bert.alert('You cannot vote twice', 'danger', 'growl-top-right')
-      } else {
-        Meteor.call('AddUsernameInVoted', project._id, votedUser)
-        Meteor.call('IncUserScore', project.userId, 'badScore')
-        Meteor.call('IncProjectScore', project._id, 'badScore')
-        Bert.alert('Your Vote Was Placed', 'success', 'growl-top-right')
-      }
-    }
-  },
-  'click #shitFace': function (event) {
-    let project = Projects.findOne({_id: this._id})
-    let votedUser = Meteor.user().username
-    console.log(project.voted)
-    console.log(votedUser)
-    if (votedUser === project.author) {
-      Bert.alert('You cannot vote for your own project', 'danger', 'growl-top-right')
-    } else {
-      if (project.voted.indexOf(votedUser) > -1) {
-        Bert.alert('You cannot vote twice', 'danger', 'growl-top-right')
-      } else {
-        Meteor.call('AddUsernameInVoted', project._id, votedUser)
-        Meteor.call('IncUserScore', project.userId, 'shitScore')
-        Meteor.call('IncProjectScore', project._id, 'shitScore')
+        Meteor.call('IncUserScore', project.userId, event.target.id.toString())
+        Meteor.call('IncProjectScore', project._id, event.target.id.toString())
+
         Bert.alert('Your Vote Was Placed', 'success', 'growl-top-right')
       }
     }

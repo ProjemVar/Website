@@ -43,24 +43,24 @@
          </div>
        {{/if}}
       </div>
-      <div class="panel-body">
+      <div class="panel-body" id="vote">
         {{ projectDesc }}
         <div class="like-buttons-container">
           <div>
-            <img src="/images/icons/love.png" class="small-face" id="awesomeFace" />
+            <img src="/images/icons/love.png" class="small-face" id="awesomeScore" />
             <span>{{scores.awesomeScore}}</span>
           </div>
           <div>
-            <img src="/images/icons/happy.png" class="small-face" id="niceFace"/>
+            <img src="/images/icons/happy.png" class="small-face" id="niceScore"/>
             <!--<img src="/images/icons/happy.png" class="small-face small-face-picked" id="happyFace"/>-->
             <span>{{scores.niceScore}}</span>
           </div>
           <div>
-            <img src="/images/icons/sad.png" class="small-face" id="badFace"/>
+            <img src="/images/icons/sad.png" class="small-face" id="badScore"/>
             <span>{{scores.badScore}}</span>
           </div>
           <div>
-            <img src="/images/icons/cry.png" class="small-face" id="shitFace"/>
+            <img src="/images/icons/cry.png" class="small-face" id="shitScore"/>
             <span>{{scores.shitScore}}</span>
           </div>
         </div>
