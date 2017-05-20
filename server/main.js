@@ -34,7 +34,7 @@ Meteor.startup(() => {
           userId: Meteor.users.findOne({username: project.Author})._id,
           date: date,
           createdAt: new Date(),
-          voted: [project.Author],
+          voted: [{username: project.Author, voteType: 'default'}],
           scores: {
             awesomeScore: 0,
             niceScore: 0,
