@@ -1,10 +1,10 @@
 import { Meteor } from 'meteor/meteor'
 import { FlowRouter } from 'meteor/kadira:flow-router'
 import { Template } from 'meteor/templating'
-import { Projects } from '../../../lib/collections/collections.js'
-import '../html/profile.html'
+import { Projects } from '../../../../lib/collections/collections.js'
+import '../../html/pages/PageProfile.html'
 
-Template.profile.helpers({
+Template.PageProfile.helpers({
   getUserProjects () {
     let id = FlowRouter.getParam('id')
     console.log(id)
@@ -30,4 +30,4 @@ Template.profile.helpers({
     return false
   }
 })
-Template.profile.events({})
+Template.PageProfile.events({})
