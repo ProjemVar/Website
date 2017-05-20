@@ -14,6 +14,12 @@ Template.project.helpers({
       return true
     }
     return false
+  },
+  isVotedByCurrentUser(p,type){
+    if(Meteor.userId() == null)return false
+    let pick = $.grep(p, function (e) { return e.username === Meteor.user().username })
+    //console.log(pick.voteType +" --- " + type);
+    return (pick.length > 0 && pick[0].voteType === type)
   }
 })
 
@@ -23,7 +29,11 @@ Template.project.events({
     Bert.alert('Your Project Was Deleted', 'success', 'growl-top-right')
   },
   'click #vote': function (event) {
-    if (Meteor.userId() === null || event.target.nodeName !== 'IMG') return
+    if (Meteor.userId() === null){
+      Bert.alert('You need to login for vote :(', 'danger', 'growl-top-right')
+      return
+    }
+    if(event.target.nodeName !== 'IMG') return
     let whichScore = event.target.id.toString()
     let project = Projects.findOne({_id: this._id})
     let votedUser = Meteor.user().username

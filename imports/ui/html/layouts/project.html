@@ -22,20 +22,35 @@
       {{ projectDesc }}
       <div class="like-buttons-container">
         <div>
-          <img src="/images/icons/love.png" class="small-face" id="awesomeScore" />
+          {{#if isVotedByCurrentUser voted "awesomeScore"}}
+            <img src="/images/icons/love.png" class="small-face small-face-picked" id="awesomeScore" />
+          {{else}}
+            <img src="/images/icons/love.png" class="small-face" id="awesomeScore" />
+          {{/if}}
           <span>{{scores.awesomeScore}}</span>
         </div>
         <div>
+          {{#if isVotedByCurrentUser voted "niceScore"}}
+          <img src="/images/icons/happy.png" class="small-face small-face-picked" id="niceScore"/>
+          {{else}}
           <img src="/images/icons/happy.png" class="small-face" id="niceScore"/>
-          <!--<img src="/images/icons/happy.png" class="small-face small-face-picked" id="happyFace"/>-->
+          {{/if}}
           <span>{{scores.niceScore}}</span>
         </div>
         <div>
+          {{#if isVotedByCurrentUser voted "badScore"}}
+          <img src="/images/icons/sad.png" class="small-face small-face-picked" id="badScore"/>
+          {{else}}
           <img src="/images/icons/sad.png" class="small-face" id="badScore"/>
+          {{/if}}
           <span>{{scores.badScore}}</span>
         </div>
         <div>
+          {{#if isVotedByCurrentUser voted "shitScore"}}
+          <img src="/images/icons/cry.png" class="small-face small-face-picked" id="shitScore"/>
+          {{else}}
           <img src="/images/icons/cry.png" class="small-face" id="shitScore"/>
+          {{/if}}
           <span>{{scores.shitScore}}</span>
         </div>
       </div>
