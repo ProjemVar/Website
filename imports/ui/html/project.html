@@ -46,6 +46,7 @@
       <div class="panel-body" id="vote">
         {{ projectDesc }}
         <div class="like-buttons-container">
+          {{voted}}
           <div>
             <img src="/images/icons/love.png" class="small-face" id="awesomeScore" />
             <span>{{scores.awesomeScore}}</span>
@@ -80,7 +81,6 @@
 </template>
 
 <template name="showproject">
-  <!--<h2>Naber showing project {{ params.id }} {{ getId }}</h2>-->
   <h1 class="page-header">
     {{ project.projectName }}
     <a href="/profile/{{project.userId}}">

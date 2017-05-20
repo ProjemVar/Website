@@ -12,6 +12,8 @@ Template.projects.helpers({
     return Projects.find({}, {sort: {createdAt: -1}})
   },
   isAdminOrYourself () {
+    if(Meteor.userId() == null)
+      return false
     var username = Meteor.user().username
     let id = this._id
     let project = Projects.findOne({_id: id})
@@ -47,7 +49,7 @@ Template.projects.events({
     Bert.alert('Your Project Was Deleted', 'success', 'growl-top-right')
   },
   'click #vote' : function(event){
-    if(event.target.nodeName != "IMG")
+    if(Meteor.userId() == null || event.target.nodeName != "IMG")
       return
     let project = Projects.findOne({_id: this._id})
     let votedUser = Meteor.user().username
@@ -56,10 +58,10 @@ Template.projects.events({
     if (votedUser === project.author) {
       Bert.alert('You cannot vote for your own project', 'danger', 'growl-top-right')
     } else {
-      if (project.voted.indexOf(votedUser) > -1) {
+      if ($.grep(project.voted, function(e){ return e.username === votedUser}).length > 0){
         Bert.alert('You cannot vote twice', 'danger', 'growl-top-right')
       } else {
-        Meteor.call('AddUsernameInVoted', project._id, votedUser)
+        Meteor.call('AddUsernameInVoted', project._id, votedUser,event.target.id.toString())
         Meteor.call('IncUserScore', project.userId, event.target.id.toString())
         Meteor.call('IncProjectScore', project._id, event.target.id.toString())
 
@@ -91,6 +93,8 @@ Template.editproject.helpers({
     return Projects.findOne({_id: id})
   },
   isAdminOrYourself () {
+    if(Meteor.userId() == null)
+      return false
     var username = Meteor.user().username
     let id = FlowRouter.getParam('id')
     let project = Projects.findOne({_id: id})
