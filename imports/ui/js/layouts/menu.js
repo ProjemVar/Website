@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor'
 import { FlowRouter } from 'meteor/kadira:flow-router'
 import { Template } from 'meteor/templating'
 import { Bert } from 'meteor/themeteorchef:bert'
-import '../html/menu.html'
+import '../../html/layouts/menu.html'
 
 Template.menu.helpers({
   isAdmin () {

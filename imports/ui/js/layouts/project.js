@@ -1,8 +1,8 @@
 import { Meteor } from 'meteor/meteor'
 import { Template } from 'meteor/templating'
 import { Bert } from 'meteor/themeteorchef:bert'
-import { Projects } from '../../../lib/collections/collections.js'
-import '../html/project.html'
+import { Projects } from '../../../../lib/collections/collections.js'
+import '../../html/layouts/project.html'
 
 Template.project.helpers({
   // not same other isAdminOrYourself

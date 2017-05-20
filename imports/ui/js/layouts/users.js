@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor'
 import { Template } from 'meteor/templating'
 import { Bert } from 'meteor/themeteorchef:bert'
-import '../html/users.html'
+import '../../html/layouts/users.html'
 
 Template.users.helpers({
   allUsers () {
