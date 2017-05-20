@@ -36,6 +36,24 @@ Template.projects.events({
   'click #delete-project': function (event) {
     Meteor.call('removeProject', this._id)
     Bert.alert('Your Project Was Deleted', 'success', 'growl-top-right')
+  },
+  'click #awesomeFace': function (event) {
+    let project = Projects.findOne({_id: this._id})
+    let votedUser = Meteor.user().username
+    console.log(project.voted)
+    console.log(votedUser)
+    if (votedUser === project.author) {
+      Bert.alert('You cannot vote for your own project', 'danger', 'growl-top-right')
+    } else {
+      if (project.voted.indexOf(votedUser) > -1) {
+        Bert.alert('You cannot vote twice', 'danger', 'growl-top-right')
+      } else {
+        Meteor.call('countVote', project._id, votedUser)
+        Meteor.call('projectAuthorAwesomeScore', project.userId)
+        Meteor.call('projectAwesomeVote', project._id)
+        Bert.alert('Your Vote Was Placed', 'success', 'growl-top-right')
+      }
+    }
   }
 })
 
