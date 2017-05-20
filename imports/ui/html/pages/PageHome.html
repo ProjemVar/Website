@@ -1,14 +1,14 @@
 <template name="PageHome">
-
+  <form id="search-project">
   <div class="row margin-tb-10">
     <div class="col-sm-9">
       <input type="text" class="form-control" id="search-project-query"/>
     </div>
     <div class="col-sm-3">
-      <button class="form-control btn btn-primary" id="search-project"><span class="glyphicon glyphicon-search">Search</span></button>
+      <button class="form-control btn btn-primary"><span class="glyphicon glyphicon-search">Search</span></button>
     </div>
   </div>
-
+</form>
   {{#each getBestorSearchedProjects }}
     {{> project }}
   {{/each}}

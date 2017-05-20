@@ -30,11 +30,8 @@ Template.PageHome.helpers({
   }
 })
 Template.PageHome.events({
-  'keydown #search-project-query': function (event, instance) {
-    let searchQ = $('#search-project-query').val()
-    instance.searchQuery.set(searchQ)
-  },
-  'click #search-project': function (event, instance) {
+  'submit #search-project': function (event, instance) {
+    event.preventDefault()
     let searchQ = $('#search-project-query').val()
     instance.searchQuery.set(searchQ)
   }
