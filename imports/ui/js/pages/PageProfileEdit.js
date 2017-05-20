@@ -3,9 +3,9 @@ import { Accounts } from 'meteor/accounts-base'
 import { FlowRouter } from 'meteor/kadira:flow-router'
 import { Template } from 'meteor/templating'
 import { Bert } from 'meteor/themeteorchef:bert'
-import '../html/profileEdit.html'
+import '../../html/pages/PageProfileEdit.html'
 
-Template.profileEdit.helpers({
+Template.PageProfileEdit.helpers({
   getId: function () {
     let id = FlowRouter.getParam('id')
     return id
@@ -29,7 +29,7 @@ Template.profileEdit.helpers({
   }
 })
 
-Template.profileEdit.events({
+Template.PageProfileEdit.events({
   'submit .profile-update-post': function (event) {
     event.preventDefault()
     let username = Meteor.myAuthFuncs.trimInput(event.target.username.value)

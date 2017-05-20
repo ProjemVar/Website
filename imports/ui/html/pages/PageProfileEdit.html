@@ -1,4 +1,4 @@
-<template name="profileEdit">
+<template name="PageProfileEdit">
   {{#if currentUser }}
     {{#if isAdminOrYourself }}
     <div class="row">
@@ -6,9 +6,9 @@
         <h3>Profile Update <small><span class="bg-info">{{ params.id }}</span></small></h3>
         <form class="profile-update-post">
           <label for="email">Email : </label>
-          <input class="form-control" name="email" type="text" value="{{profile.email}}"/>
+          <input class="form-control" name="email" type="text" value="{{profile.email}}" disabled />
           <label for="username">Username : </label>
-          <input class="form-control" name="username" type="text" value="{{profile.username}}" disabled/>
+          <input class="form-control" name="username" type="text" value="{{profile.username}}">
           <label for="password">Old Password : </label>
           <input class="form-control" name="oldpassword" type="password"/>
           <label for="password">New Password : </label>

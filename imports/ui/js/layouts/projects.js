@@ -1,6 +1,6 @@
 import { Template } from 'meteor/templating'
-import { Projects } from '../../../lib/collections/collections.js'
-import '../html/projects.html'
+import { Projects } from '../../../../lib/collections/collections.js'
+import '../../html/layouts/projects.html'
 
 Template.projects.helpers({
   getAllProjects () {
@@ -9,5 +9,4 @@ Template.projects.helpers({
     return Projects.find({}, {sort: {createdAt: -1}})
   }
 })
-
 Template.projects.events({})

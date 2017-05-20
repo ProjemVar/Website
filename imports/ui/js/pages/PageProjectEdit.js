@@ -2,11 +2,11 @@ import { Meteor } from 'meteor/meteor'
 import { Template } from 'meteor/templating'
 import { FlowRouter } from 'meteor/kadira:flow-router'
 import { Bert } from 'meteor/themeteorchef:bert'
-import { Projects } from '../../../lib/collections/collections.js'
-import '../html/projectEdit.html'
+import { Projects } from '../../../../lib/collections/collections.js'
+import '../../html/pages/PageProjectEdit.html'
 
 // editproject template
-Template.projectEdit.helpers({
+Template.PageProjectEdit.helpers({
   getId: function () {
     var id = FlowRouter.getParam('id')
     return id
@@ -26,7 +26,7 @@ Template.projectEdit.helpers({
   }
 })
 
-Template.projectEdit.events({
+Template.PageProjectEdit.events({
   'submit .project-update-post': function (event) {
     let projectName = Meteor.myAuthFuncs.trimInput(event.target.projectName.value)
     let projectDesc = Meteor.myAuthFuncs.trimInput(event.target.projectDesc.value)

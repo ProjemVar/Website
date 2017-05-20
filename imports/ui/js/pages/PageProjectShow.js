@@ -1,9 +1,9 @@
 import { Template } from 'meteor/templating'
 import { FlowRouter } from 'meteor/kadira:flow-router'
-import { Projects } from '../../../lib/collections/collections.js'
-import '../html/projectShow.html'
+import { Projects } from '../../../../lib/collections/collections.js'
+import '../../html/pages/PageProjectShow.html'
 
-Template.projectShow.helpers({
+Template.PageProjectShow.helpers({
   getId: function () {
     var id = FlowRouter.getParam('id')
     return id
