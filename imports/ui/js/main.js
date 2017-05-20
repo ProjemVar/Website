@@ -4,20 +4,22 @@ import { Projects } from '../../../lib/collections/collections.js'
 import '../html/main.html'
 
 // Pages
-import './PageAdmin.js'
-import './PageHome.js'
-import './PageProjects.js'
-import './PageLogin.js'
-import './PageRegister.js'
-
+import './pages/PageAdmin.js'
+import './pages/PageHome.js'
+import './pages/PageProjects.js'
+import './pages/PageLogin.js'
+import './pages/PageRegister.js'
+import './pages/PageProfile.js'
 // W
-import './menu.js'
+import './projects.js'
 import './projectEdit.js'
 import './projectShow.js'
-import './projects.js'
 import './profileEdit.js'
-import './profile.js'
-import './users.js'
+
+// Layouts
+import './layouts/menu.js'
+import './layouts/project.js'
+import './layouts/users.js'
 
 Template.main.helpers({
   countProject: function () {

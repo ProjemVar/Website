@@ -18,7 +18,7 @@ FlowRouter.route('/', {
 FlowRouter.route('/profile/:id', {
   action: function (params, queryParams) {
     BlazeLayout.render('main', {
-      content: 'profile',
+      content: 'PageProfile',
       params: params
     })
   }
