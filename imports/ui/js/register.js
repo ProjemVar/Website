@@ -22,7 +22,11 @@ Template.register.events({
         username: username,
         email: email,
         password: password,
-        profile: {
+        scores: {
+          awesomeScore: 0,
+          niceScore: 0,
+          badScore: 0,
+          shitScore: 0
         }
       }, function (err) {
         if (err) {
