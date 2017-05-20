@@ -3,9 +3,9 @@ import { Accounts } from 'meteor/accounts-base'
 import { FlowRouter } from 'meteor/kadira:flow-router'
 import { Bert } from 'meteor/themeteorchef:bert'
 import { Template } from 'meteor/templating'
-import '../html/register.html'
+import '../html/PageRegister.html'
 
-Template.register.events({
+Template.PageRegister.events({
   'submit #register-form' (event, instance) {
     event.preventDefault()
     let username = Meteor.myAuthFuncs.trimInput(event.target.username.value)

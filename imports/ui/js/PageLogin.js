@@ -2,18 +2,18 @@ import { Meteor } from 'meteor/meteor'
 import { FlowRouter } from 'meteor/kadira:flow-router'
 import { Template } from 'meteor/templating'
 import { Bert } from 'meteor/themeteorchef:bert'
-import '../html/login.html'
+import '../html/PageLogin.html'
 
-Template.login.onCreated(function loginOnCreated () {
+Template.PageLogin.onCreated(function loginOnCreated () {
   if (Meteor.userId() !== null) {
     FlowRouter.go('/')
   }
 })
 
-Template.login.helpers({
+Template.PageLogin.helpers({
 })
 
-Template.login.events({
+Template.PageLogin.events({
   'submit .form-signin': function (event) {
     var email = Meteor.myAuthFuncs.trimInput(event.target.email.value)
     var password = Meteor.myAuthFuncs.trimInput(event.target.password.value)
