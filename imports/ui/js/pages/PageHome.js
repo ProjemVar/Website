@@ -19,7 +19,8 @@ Template.PageHome.helpers({
         {
           $or: [
             {projectDesc: {$regex: searchQ, $options: 'i'}},
-            {projectName: {$regex: searchQ, $options: 'i'}}
+            {projectName: {$regex: searchQ, $options: 'i'}},
+            {author : {$regex: searchQ, $options: 'i'}}
           ]
         },
         { sort: {'totalScore': -1} }
