@@ -10,6 +10,15 @@ Template.projects.helpers({
     console.log('Runned getAllProjects helpers')
     console.log(Projects.find({}, {sort: {createdAt: -1}}))
     return Projects.find({}, {sort: {createdAt: -1}})
+  },
+  isAdminOrYourself () {
+    var username = Meteor.user().username
+    let id = this._id
+    let project = Projects.findOne({_id: id})
+    if (username === 'admin' || username === project.author) {
+      return true
+    }
+    return false
   }
 })
 

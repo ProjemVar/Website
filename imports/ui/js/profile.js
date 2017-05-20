@@ -20,6 +20,16 @@ Template.profileWithId.helpers({
       username: user.username,
       email: user.emails[0].address
     }
+  },
+  // Not same in project.js
+  isAdminOrYourself () {
+    let id = FlowRouter.getParam('id')
+    let username = Meteor.user().username
+    let userId = Meteor.userId()
+    if (username === 'admin' || userId === id) {
+      return true
+    }
+    return false
   }
 })
 Template.profileWithId.events({})
