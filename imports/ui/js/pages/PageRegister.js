@@ -22,6 +22,7 @@ Template.PageRegister.events({
         username: username,
         email: email,
         password: password,
+        totalScore: 0,
         scores: {
           awesomeScore: 0,
           niceScore: 0,

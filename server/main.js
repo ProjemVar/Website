@@ -14,7 +14,8 @@ Meteor.startup(() => {
           username: user.username,
           email: user.email,
           password: user.password,
-          profile: user.profile
+          scores: user.scores,
+          totalScore: 0,
         })
       })
     }
@@ -35,6 +36,7 @@ Meteor.startup(() => {
           date: date,
           createdAt: new Date(),
           voted: [{username: project.Author, voteType: 'default'}],
+          totalScore: 0,
           scores: {
             awesomeScore: 0,
             niceScore: 0,
