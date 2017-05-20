@@ -3,7 +3,7 @@ import { Accounts } from 'meteor/accounts-base'
 import { FlowRouter } from 'meteor/kadira:flow-router'
 import { Bert } from 'meteor/themeteorchef:bert'
 import { Template } from 'meteor/templating'
-import '../html/PageRegister.html'
+import '../../html/pages/PageRegister.html'
 
 Template.PageRegister.events({
   'submit #register-form' (event, instance) {
