@@ -48,9 +48,9 @@ Template.projects.events({
       if (project.voted.indexOf(votedUser) > -1) {
         Bert.alert('You cannot vote twice', 'danger', 'growl-top-right')
       } else {
-        Meteor.call('countVote', project._id, votedUser)
-        Meteor.call('projectAuthorAwesomeScore', project.userId)
-        Meteor.call('projectAwesomeVote', project._id)
+        Meteor.call('AddUsernameInVoted', project._id, votedUser)
+        Meteor.call('IncUserScore', project.userId, 'awesomeScore')
+        Meteor.call('IncProjectScore', project._id, 'awesomeScore')
         Bert.alert('Your Vote Was Placed', 'success', 'growl-top-right')
       }
     }
