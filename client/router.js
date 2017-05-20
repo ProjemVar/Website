@@ -5,13 +5,13 @@ import '../imports/ui/js/main.js'
 FlowRouter.route('/admin', {
   action: function () {
     // BlazeLayout.render("main", {content : "index",topmenu : "indexmenu"});
-    BlazeLayout.render('main', {content: 'index'})
+    BlazeLayout.render('main', {content: 'PageAdmin'})
   }
 })
 
 FlowRouter.route('/', {
   action: function () {
-    BlazeLayout.render('main', {content: 'home'})
+    BlazeLayout.render('main', {content: 'PageHome'})
   }
 })
 
@@ -35,19 +35,19 @@ FlowRouter.route('/profile/edit/:id', {
 
 FlowRouter.route('/login/', {
   action: function () {
-    BlazeLayout.render('main', {content: 'login'})
+    BlazeLayout.render('main', {content: 'PageLogin'})
   }
 })
 
 FlowRouter.route('/register/', {
   action: function () {
-    BlazeLayout.render('main', {content: 'register'})
+    BlazeLayout.render('main', {content: 'PageRegister'})
   }
 })
 // Project begin
 FlowRouter.route('/projects/', {
   action: function () {
-    BlazeLayout.render('main', {content: 'projects'})
+    BlazeLayout.render('main', {content: 'PageProjects'})
   }
 })
 
