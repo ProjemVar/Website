@@ -19,7 +19,8 @@ Template.PageHome.helpers({
         {
           $or: [
             {projectDesc: {$regex: searchQ, $options: 'i'}},
-            {projectName: {$regex: searchQ, $options: 'i'}}
+            {projectName: {$regex: searchQ, $options: 'i'}},
+            {author: {$regex: searchQ, $options: 'i'}}
           ]
         },
         { sort: {'totalScore': -1} }
@@ -29,9 +30,17 @@ Template.PageHome.helpers({
   }
 })
 Template.PageHome.events({
+  /* Google Style
   'keydown #search-project-query': function (event, instance) {
     let searchQ = $('#search-project-query').val()
     instance.searchQuery.set(searchQ)
+  },
+  */
+  'keypress #search-project-query': function (event, instance) {
+    if (event.keyCode === 13) {
+      let searchQ = $('#search-project-query').val()
+      instance.searchQuery.set(searchQ)
+    }
   },
   'click #search-project': function (event, instance) {
     let searchQ = $('#search-project-query').val()
