@@ -1,7 +1,6 @@
 import { Meteor } from 'meteor/meteor'
 import { FlowRouter } from 'meteor/kadira:flow-router'
 import { Template } from 'meteor/templating'
-import { Bert } from 'meteor/themeteorchef:bert'
 import { Projects } from '../../../lib/collections/collections.js'
 import '../html/profile.html'
 
@@ -31,9 +30,4 @@ Template.profile.helpers({
     return false
   }
 })
-Template.profile.events({
-  'click #delete-project': function (event) {
-    Meteor.call('removeProject', this._id)
-    Bert.alert('Your Project Was Deleted', 'success', 'growl-top-right')
-  }
-})
+Template.profile.events({})

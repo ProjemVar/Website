@@ -2,56 +2,7 @@
   <!-- All Projects -->
   <h1>Projects</h1>
   {{#each getAllProjects }}
-    <div class="panel panel-info">
-      <div class="panel-heading clearfix">
-       <h4 class="panel-title pull-left" style="padding-top: 7.5px;">
-         <a href="/project/{{_id}}">
-           <h3>{{projectName}}</h3>
-         </a>
-         <a href="/profile/{{userId}}">
-           <small>{{author}}</small>
-         </a>
-       </h4>
-       {{#if currentUser }}
-        {{#if isAdminOrYourself }}
-         <div class="btn-group pull-right">
-           <a href="/project/edit/{{_id}}"  class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></a>
-           <a class="btn btn-danger" id="delete-project" ><span class="glyphicon glyphicon-trash"></span></a>
-         </div>
-        {{/if}}
-       {{/if}}
-      </div>
-      <div class="panel-body" id="vote">
-        {{ projectDesc }}
-        <div class="like-buttons-container">
-          <div>
-            <img src="/images/icons/love.png" class="small-face" id="awesomeScore" />
-            <span>{{scores.awesomeScore}}</span>
-          </div>
-          <div>
-            <img src="/images/icons/happy.png" class="small-face" id="niceScore"/>
-            <!--<img src="/images/icons/happy.png" class="small-face small-face-picked" id="happyFace"/>-->
-            <span>{{scores.niceScore}}</span>
-          </div>
-          <div>
-            <img src="/images/icons/sad.png" class="small-face" id="badScore"/>
-            <span>{{scores.badScore}}</span>
-          </div>
-          <div>
-            <img src="/images/icons/cry.png" class="small-face" id="shitScore"/>
-            <span>{{scores.shitScore}}</span>
-          </div>
-        </div>
-      </div>
-      <div class="panel-footer">
-        {{date}}
-      </div>
-      <!--
-      <p style="float:right">
-        Voted: {{voted}}
-      </p>
-      -->
-    </div>
+    {{> project }}
   {{/each}}
   <!-- End All Projects -->
 </template>

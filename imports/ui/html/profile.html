@@ -24,49 +24,7 @@
       <h1>Profile Projects</h1>
     {{/if}}
     {{#each getUserProjects }}
-    <div class="panel panel-info">
-      <div class="panel-heading clearfix">
-       <h4 class="panel-title pull-left" style="padding-top: 7.5px;">
-         <a href="/project/{{_id}}">
-           <h3>{{projectName}}</h3>
-         </a>
-         <a href="/profile/{{userId}}">
-           <small>{{author}}</small>
-         </a>
-       </h4>
-       {{#if isAdminOrYourself }}
-       <div class="btn-group pull-right">
-         <a href="/project/edit/{{_id}}"  class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></a>
-         <a class="btn btn-danger" id="delete-project" ><span class="glyphicon glyphicon-trash"></span></a>
-       </div>
-       {{/if}}
-      </div>
-      <div class="panel-body">
-        {{ projectDesc }}
-        <div class="like-buttons-container">
-          <div>
-            <img src="/images/icons/love.png" class="small-face" id="loveFace" />
-            <span>{{scores.awesomeScore}}</span>
-          </div>
-          <div>
-            <img src="/images/icons/happy.png" class="small-face" id="happyFace"/>
-            <!--<img src="/images/icons/happy.png" class="small-face small-face-picked" id="happyFace"/>-->
-            <span>{{scores.niceScore}}</span>
-          </div>
-          <div>
-            <img src="/images/icons/sad.png" class="small-face" id="sadFace"/>
-            <span>{{scores.badScore}}</span>
-          </div>
-          <div>
-            <img src="/images/icons/cry.png" class="small-face" id="cryFace"/>
-            <span>{{scores.shitScore}}</span>
-          </div>
-        </div>
-      </div>
-      <div class="panel-footer">
-        {{date}}
-      </div>
-    </div>
+      {{> project }}
     {{/each}}
   {{else}}
     <h2>Please <a href="/login/">login</a></h2>
