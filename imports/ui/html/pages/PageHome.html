@@ -5,4 +5,7 @@
   {{else}}
     Please <a href="/login">login</a>
   {{/if}}
+  {{#each getBestProjects }}
+    {{> project }}
+  {{/each}}
 </template>
