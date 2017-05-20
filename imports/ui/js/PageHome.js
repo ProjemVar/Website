@@ -1,12 +1,12 @@
 import { Meteor } from 'meteor/meteor'
 import { Template } from 'meteor/templating'
-import '../html/home.html'
+import '../html/PageHome.html'
 
-Template.home.onCreated(function homeOnCreated () {
+Template.PageHome.onCreated(function homeOnCreated () {
   console.log('Home Page created')
 })
 
-Template.home.helpers({
+Template.PageHome.helpers({
   getUsername: function () {
     return Meteor.user().username
   }
