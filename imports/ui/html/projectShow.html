@@ -1,0 +1,14 @@
+<template name="projectShow">
+  <h1 class="page-header">
+    {{ project.projectName }}
+    <a href="/profile/{{project.userId}}">
+      <small>{{project.author}}</small>
+    </a>
+  </h1>
+  <p class="lead">{{ project.projectDesc }}</p>
+  <div class="well">
+    <p>
+      {{{project.projectContent}}}
+    </p>
+  </div>
+</template>
