@@ -18,7 +18,7 @@ FlowRouter.route('/', {
 FlowRouter.route('/profile/:id', {
   action: function (params, queryParams) {
     BlazeLayout.render('main', {
-      content: 'profileWithId',
+      content: 'profile',
       params: params
     })
   }
@@ -27,7 +27,7 @@ FlowRouter.route('/profile/:id', {
 FlowRouter.route('/profile/edit/:id', {
   action: function (params, queryParams) {
     BlazeLayout.render('main', {
-      content: 'editprofile',
+      content: 'profileEdit',
       params: params
     })
   }
@@ -54,7 +54,7 @@ FlowRouter.route('/projects/', {
 FlowRouter.route('/project/:id', {
   action: function (params, queryParams) {
     BlazeLayout.render('main', {
-      content: 'showproject',
+      content: 'projectShow',
       params: params
     })
   }
@@ -62,7 +62,7 @@ FlowRouter.route('/project/:id', {
 FlowRouter.route('/project/edit/:id', {
   action: function (params, queryParams) {
     BlazeLayout.render('main', {
-      content: 'editproject',
+      content: 'projectEdit',
       params: params
     })
   }

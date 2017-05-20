@@ -1,0 +1,29 @@
+<template name="profileEdit">
+  {{#if currentUser }}
+    {{#if isAdminOrYourself }}
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 form-group ">
+        <h3>Profile Update <small><span class="bg-info">{{ params.id }}</span></small></h3>
+        <form class="profile-update-post">
+          <label for="email">Email : </label>
+          <input class="form-control" name="email" type="text" value="{{profile.email}}"/>
+          <label for="username">Username : </label>
+          <input class="form-control" name="username" type="text" value="{{profile.username}}" disabled/>
+          <label for="password">Old Password : </label>
+          <input class="form-control" name="oldpassword" type="password"/>
+          <label for="password">New Password : </label>
+          <input class="form-control" name="password" type="password"/>
+          <label for="repassword">Re-Password : </label>
+          <input class="form-control" name="repassword" type="password"/>
+          <input class="form-control btn btn-primary" type="submit" value="Update Profile" />
+        </form>
+
+      </div>
+    </div>
+    {{else}}
+      <h2>Your not admin or this person! Fuck off.</h2>
+    {{/if}}
+  {{else}}
+    <h2>Please <a href="/login/">login</a></h2>
+  {{/if}}
+</template>
