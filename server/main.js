@@ -15,7 +15,7 @@ Meteor.startup(() => {
           email: user.email,
           password: user.password,
           scores: user.scores,
-          totalScore: 0,
+          totalScore: 0
         })
       })
     }
