@@ -1,0 +1,22 @@
+<template name="PageChat">
+  <h1>Project Channel</h1>
+  {{> welcome }}
+  {{> input }}
+  {{> messages }}
+</template>
+
+<template name="welcome">
+  <p>
+    Let's chat.
+  </p>
+</template>
+
+<template name="input">
+  <p>Message: <input type="text" id="message"></p>
+</template>
+
+<template name="messages">
+  {{#each messages}}
+    <strong>{{name}}:</strong> {{message}}<br>
+  {{/each}}
+</template>

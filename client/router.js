@@ -15,6 +15,15 @@ FlowRouter.route('/', {
   }
 })
 
+FlowRouter.route('/chat/:id', {
+  action: function (params, queryParams) {
+    BlazeLayout.render('main', {
+      content: 'PageChat',
+      params: params
+    })
+  }
+})
+
 FlowRouter.route('/profile/:id', {
   action: function (params, queryParams) {
     BlazeLayout.render('main', {
