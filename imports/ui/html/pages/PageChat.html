@@ -1,8 +1,8 @@
 <template name="PageChat">
   <h1>Project Channel</h1>
   {{> welcome }}
-  {{> input }}
   {{> messages }}
+  {{> input }}
 </template>
 
 <template name="welcome">
@@ -17,6 +17,6 @@
 
 <template name="messages">
   {{#each messages}}
-    <strong>{{name}}:</strong> {{message}}<br>
+    {{ getDate time }} <strong>{{name}}:</strong> {{message}}<br>
   {{/each}}
 </template>
