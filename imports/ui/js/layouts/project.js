@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor'
 import { Template } from 'meteor/templating'
 import { Bert } from 'meteor/themeteorchef:bert'
 import { Projects } from '../../../../lib/collections/collections.js'
+import moment from 'moment'
 import '../../html/layouts/project.html'
 
 Template.project.helpers({
@@ -15,10 +16,13 @@ Template.project.helpers({
     }
     return false
   },
-  isVotedByCurrentUser(p,type){
-    if(Meteor.userId() == null)return false
+  getDate: function (time) {
+    return moment(time).format('MMMM Do YYYY, h:mm:ss a')
+  },
+  isVotedByCurrentUser (p, type) {
+    if (Meteor.userId() == null) return false
     let pick = $.grep(p, function (e) { return e.username === Meteor.user().username })
-    //console.log(pick.voteType +" --- " + type);
+    // console.log(pick.voteType +" --- " + type);
     return (pick.length > 0 && pick[0].voteType === type)
   }
 })
@@ -29,8 +33,8 @@ Template.project.events({
     Bert.alert('Your Project Was Deleted', 'success', 'growl-top-right')
   },
   'click #vote': function (event) {
-    if(event.target.nodeName !== 'IMG') return
-    if (Meteor.userId() === null){
+    if (event.target.nodeName !== 'IMG') return
+    if (Meteor.userId() === null) {
       Bert.alert('You need to login for vote :(', 'danger', 'growl-top-right')
       return
     }
