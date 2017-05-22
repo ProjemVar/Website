@@ -8,7 +8,7 @@ import '../../html/pages/PageChat.html'
 Template.messages.helpers({
   messages: function () {
     let id = FlowRouter.getParam('id')
-    return Messages.find({projectId: id}, {sort: {time: 1}})
+    return Messages.find({projectId: id}, {sort: {createdAt: 1}})
   },
   getDate: function (time) {
     return moment(time).format('MMMM Do YYYY, h:mm:ss a')
@@ -31,7 +31,7 @@ Template.input.events = {
           projectId: id,
           name: name,
           message: message.value,
-          time: Date.now()
+          createdAt: Date.now()
         })
         document.getElementById('message').value = ''
         message.value = ''

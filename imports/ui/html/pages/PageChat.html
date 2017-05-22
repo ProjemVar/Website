@@ -17,6 +17,6 @@
 
 <template name="messages">
   {{#each messages}}
-    {{ getDate time }} <strong>{{name}}:</strong> {{{message}}}<br>
+    {{ getDate createdAt }} <strong>{{name}}:</strong> {{{message}}}<br>
   {{/each}}
 </template>
