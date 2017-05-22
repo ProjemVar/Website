@@ -16,26 +16,20 @@ Template.messages.helpers({
 })
 
 Template.input.events = {
-  'keydown input#message': function (event) {
-    if (event.which === 13) { // 13 is the enter key event
-      let id = FlowRouter.getParam('id')
-      var name
-      if (Meteor.user()) {
-        name = Meteor.user().username
-      } else {
-        name = 'Anonymous'
-      }
-      var message = document.getElementById('message')
-      if (message.value !== '') {
-        Messages.insert({
-          projectId: id,
-          name: name,
-          message: message.value,
-          createdAt: Date.now()
-        })
-        document.getElementById('message').value = ''
-        message.value = ''
-      }
-    }
+  'submit #messageForm': function (event) {
+    event.preventDefault()
+    let id = FlowRouter.getParam('id')
+    var name = (Meteor.user()) ? Meteor.user().username : "Anonymous"
+    var message = $("#messageInput")
+    if (message.val() === '') return;
+
+    Messages.insert({
+        projectId: id,
+        name: name,
+        message: message.val(),
+        createdAt: Date.now()
+      })
+
+    message.val("")
   }
 }
