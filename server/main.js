@@ -23,18 +23,13 @@ Meteor.startup(() => {
     if (Projects.find().count() < 1) {
       console.log(DefaultProjects)
       DefaultProjects.forEach((project) => {
-        var year = new Date().getFullYear()
-        var month = new Date().getMonth() + 1 // [ 0 : January, ]
-        var day = new Date().getDate()
-        var date = (month + '/' + day + '/' + year).toString()
         Projects.insert({
           projectName: project.Name,
           projectDesc: project.Desc,
           projectContent: project.Content,
           author: project.Author,
           userId: Meteor.users.findOne({username: project.Author})._id,
-          date: date,
-          createdAt: new Date(),
+          createdAt: Date.now(),
           voted: [{username: project.Author, voteType: 'default'}],
           totalScore: 0,
           scores: {
