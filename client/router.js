@@ -19,35 +19,20 @@ FlowRouter.route('/', {
 
 FlowRouter.route('/profile/:id', {
   action: function (params, queryParams) {
-    console.log('FlowRouter profile id:', params.id)
-    if (Meteor.users.findOne({_id: params.id})) {
-      BlazeLayout.render('main', {
-        content: 'PageProfile',
-        params: params
-      })
-    } else {
-      BlazeLayout.render('main', {
-        content: 'PageError',
-        params: params
-      })
-    }
-  }
+  BlazeLayout.render('main', {
+    content: 'PageProfile',
+    params: params
+  })
 })
 
 FlowRouter.route('/profile/edit/:id', {
   action: function (params, queryParams) {
-    console.log('FlowRouter profile id:', params.id)
-    if (Meteor.users.findOne({_id: params.id})) {
+
       BlazeLayout.render('main', {
         content: 'PageProfileEdit',
         params: params
       })
-    } else {
-      BlazeLayout.render('main', {
-        content: 'PageError',
-        params: params
-      })
-    }
+    } 
   }
 })
 
@@ -71,34 +56,20 @@ FlowRouter.route('/projects/', {
 
 FlowRouter.route('/project/:id', {
   action: function (params, queryParams) {
-    console.log('FlowRouter project id:', params.id)
-    if (Projects.findOne({_id: params.id})) {
       BlazeLayout.render('main', {
         content: 'PageProjectShow',
         params: params
       })
-    } else {
-      BlazeLayout.render('main', {
-        content: 'PageError',
-        params: params
-      })
-    }
+
   }
 })
 FlowRouter.route('/project/edit/:id', {
   action: function (params, queryParams) {
-    console.log('FlowRouter project id:', params.id)
-    if (Projects.findOne({_id: params.id})) {
-      BlazeLayout.render('main', {
+  BlazeLayout.render('main', {
         content: 'PageProjectEdit',
         params: params
       })
-    } else {
-      BlazeLayout.render('main', {
-        content: 'PageError',
-        params: params
-      })
-    }
+
   }
 })
 // project end
