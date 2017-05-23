@@ -2,15 +2,10 @@
   <div class="panel panel-info">
     <div class="panel-heading clearfix">
      <h4 class="panel-title pull-left" style="padding-top: 7.5px;">
-       <a href="/project/{{_id}}">
-         <h3>{{projectName}}</h3>
-       </a>
-       <a href="/profile/{{userId}}">
-         <small>{{author}}</small>
-       </a>
-       <a href="/chat/{{_id}}">
-         Chat
-       </a>
+
+         <h3><a href="/project/{{_id}}">{{projectName}}</a><a href="/profile/{{userId}}"> <small>{{author}}</small></a></h3>
+
+
      </h4>
      {{#if currentUser }}
       {{#if isAdminOrYourself }}
