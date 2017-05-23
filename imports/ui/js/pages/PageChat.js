@@ -28,6 +28,9 @@ Template.input.events = {
       createdAt: Date.now()
     })
     messageInput.value = ''
+    var chatDiv = $(".chat-messages")
+    chatDiv.scrollTop(chatDiv.prop("scrollHeight"))
+    //alert(chatDiv.scrollHeight)
     return false
   }
 }

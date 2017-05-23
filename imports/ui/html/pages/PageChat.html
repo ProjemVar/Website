@@ -1,20 +1,18 @@
 <template name="PageChat">
   <h1><a href="/project/{{params.id}}">Project</a> Channel</h1>
-  {{> welcome }}
-  {{> messages }}
-  {{> input }}
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4 chat-container">
+      <div id="chatDiv" class="chat-messages">
+        {{> messages }}
+      </div>
+    {{> input }}
+  </div>
+</div>
 </template>
-
-<template name="welcome">
-  <p>
-    Let's chat.
-  </p>
-</template>
-
 <template name="input">
-  <form id="messageForm">
-    <p>Message: <input type="text" name="messageInput"></p>
-  </form>
+      <form id="messageForm" class="form-group">
+        <input type="text" name="messageInput" class="form-control">
+      </form>
 </template>
 
 <template name="messages">
