@@ -19,4 +19,13 @@ Template.projects.helpers({
     return Projects.find({}, {sort: {createdAt: -1}, skip: Template.instance().page.get() * 5, limit: 5})
   }
 })
-Template.projects.events({})
+Template.projects.events({
+  'click #next': function (event) {
+    let page = Template.instance().page
+    page.set(page.get() + 1)
+  },
+  'click #prev': function (event) {
+    let page = Template.instance().page
+    page.set(page.get() - 1)
+  }
+})
