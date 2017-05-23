@@ -50,27 +50,16 @@ body {
 .footer-center{
   line-height: 45px;
 }
-.chat-container{
-  background-color: #c9ddfc ;
-  height:400px;
-}
 .chat-messages{
-  margin:10px;
   overflow:scroll;
   overflow-x: hidden;
-  height:80%;
+  height:300px;
   padding:5px;
 }
 .chat-input{
-  height:20%;
-  margin:10px;
-}
-.chat-input input[type="text"]{
     background-color: #eaeff7;
 }
 .chat-message-holder{
-  padding:5px;
   margin-top:5px;
-  border-radius: 25px;
-  background-color: #9ff9a1;
+  border-bottom: 1px dotted #B3A9A9;
 }
