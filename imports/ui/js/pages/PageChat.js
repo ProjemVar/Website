@@ -17,19 +17,17 @@ Template.messages.helpers({
 
 Template.input.events = {
   'submit #messageForm': function (event) {
-    event.preventDefault()
+    let messageInput = event.target.messageInput
     let id = FlowRouter.getParam('id')
-    var name = (Meteor.user()) ? Meteor.user().username : "Anonymous"
-    var message = $("#messageInput")
-    if (message.val() === '') return;
-
+    let name = (Meteor.user()) ? Meteor.user().username : 'Anonymous'
+    if (messageInput.value === '') return
     Messages.insert({
-        projectId: id,
-        name: name,
-        message: message.val(),
-        createdAt: Date.now()
-      })
-
-    message.val("")
+      projectId: id,
+      name: name,
+      message: messageInput.value,
+      createdAt: Date.now()
+    })
+    messageInput.value = ''
+    return false
   }
 }
