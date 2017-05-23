@@ -51,17 +51,14 @@ body {
   line-height: 45px;
 }
 .chat-container{
-  margin-left: 10px;
   background-color: #c9ddfc ;
   height:400px;
 }
 .chat-messages{
-  background-color: white;
   margin:10px;
   overflow:scroll;
   overflow-x: hidden;
   height:80%;
-  border:solid 1px;
   padding:5px;
 }
 .chat-input{
@@ -70,4 +67,10 @@ body {
 }
 .chat-input input[type="text"]{
     background-color: #eaeff7;
+}
+.chat-message-holder{
+  padding:5px;
+  margin-top:5px;
+  border-radius: 25px;
+  background-color: #9ff9a1;
 }

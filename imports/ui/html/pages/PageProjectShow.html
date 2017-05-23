@@ -1,5 +1,5 @@
 <template name="PageProjectShow">
-  <h1 class="page-header">
+  <h1 >
     {{ project.projectName }}
     <a href="/profile/{{project.userId}}">
       <small>{{project.author}}</small>
@@ -12,7 +12,7 @@
         {{{project.projectContent}}}
       </p>
     </div>
-    <div class="col-sm-3 chat-container">
+    <div class="col-sm-4 chat-container">
       {{>PageChat}}
     </div>
   </div>

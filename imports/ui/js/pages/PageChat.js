@@ -5,6 +5,13 @@ import { Messages } from '../../../../lib/collections/collections.js'
 import moment from 'moment'
 import '../../html/pages/PageChat.html'
 
+Template.messages.onCreated(function messagesOnCreated () {
+  Meteor.setTimeout(function(){
+    var chatDiv = $(".chat-messages")
+    chatDiv.scrollTop(chatDiv.prop("scrollHeight"))
+  },500)
+
+})
 Template.messages.helpers({
   messages: function () {
     let id = FlowRouter.getParam('id')

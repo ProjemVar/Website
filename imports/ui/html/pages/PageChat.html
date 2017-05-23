@@ -12,6 +12,8 @@
 
 <template name="messages">
   {{#each messages}}
-    {{ getDate createdAt }} <strong>{{name}}:</strong> {{{message}}}<br>
+  <div class="chat-message-holder">
+    <strong>{{name}}:</strong> {{{message}}}<br>
+  </div>
   {{/each}}
 </template>
