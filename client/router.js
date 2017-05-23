@@ -1,7 +1,5 @@
-// import { Meteor } from 'meteor/meteor'
 import { FlowRouter } from 'meteor/kadira:flow-router'
 import { BlazeLayout } from 'meteor/kadira:blaze-layout'
-// import { Projects } from '../lib/collections/collections.js'
 import '../imports/ui/js/main.js'
 
 FlowRouter.route('/admin', {
@@ -19,41 +17,19 @@ FlowRouter.route('/', {
 
 FlowRouter.route('/profile/:id', {
   action: function (params, queryParams) {
-    console.log('FlowRouter profile id:', params.id)
     BlazeLayout.render('main', {
       content: 'PageProfile',
       params: params
     })
-    /*
-    if (Meteor.users.findOne({_id: params.id})) {
-      ...
-    } else {
-      BlazeLayout.render('main', {
-        content: 'PageError',
-        params: params
-      })
-    }
-    */
   }
 })
 
 FlowRouter.route('/profile/edit/:id', {
   action: function (params, queryParams) {
-    console.log('FlowRouter profile id:', params.id)
     BlazeLayout.render('main', {
       content: 'PageProfileEdit',
       params: params
     })
-    /*
-    if (Meteor.users.findOne({_id: params.id})) {
-      ...
-    } else {
-      BlazeLayout.render('main', {
-        content: 'PageError',
-        params: params
-      })
-    }
-    */
   }
 })
 
@@ -77,40 +53,18 @@ FlowRouter.route('/projects/', {
 
 FlowRouter.route('/project/:id', {
   action: function (params, queryParams) {
-    console.log('FlowRouter project id:', params.id)
     BlazeLayout.render('main', {
       content: 'PageProjectShow',
       params: params
     })
-    /*
-    if (Projects.findOne({_id: params.id})) {
-      ...
-    } else {
-      BlazeLayout.render('main', {
-        content: 'PageError',
-        params: params
-      })
-    }
-    */
   }
 })
 FlowRouter.route('/project/edit/:id', {
   action: function (params, queryParams) {
-    console.log('FlowRouter project id:', params.id)
     BlazeLayout.render('main', {
       content: 'PageProjectEdit',
       params: params
     })
-    /*
-    if (Projects.findOne({_id: params.id})) {
-        ...
-    } else {
-      BlazeLayout.render('main', {
-        content: 'PageError',
-        params: params
-      })
-    }
-    */
   }
 })
 // project end
