@@ -17,6 +17,7 @@ Template.messages.helpers({
 
 Template.input.events = {
   'submit #messageForm': function (event) {
+    event.preventDefault()
     let messageInput = event.target.messageInput
     let id = FlowRouter.getParam('id')
     let name = (Meteor.user()) ? Meteor.user().username : 'Anonymous'
@@ -30,7 +31,6 @@ Template.input.events = {
     messageInput.value = ''
     var chatDiv = $(".chat-messages")
     chatDiv.scrollTop(chatDiv.prop("scrollHeight"))
-    //alert(chatDiv.scrollHeight)
     return false
   }
 }

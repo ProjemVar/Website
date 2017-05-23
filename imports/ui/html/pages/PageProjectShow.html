@@ -6,12 +6,14 @@
     </a>
   </h1>
   <p class="lead">{{ project.projectDesc }}</p>
-  <div class="well">
-    <p>
-      {{{project.projectContent}}}
-    </p>
-  </div>
-  <div>
-    <a href="/chat/{{project._id}}">Chat</a>
+  <div class="row">
+    <div class="well col-sm-8">
+      <p>
+        {{{project.projectContent}}}
+      </p>
+    </div>
+    <div class="col-sm-3 chat-container">
+      {{>PageChat}}
+    </div>
   </div>
 </template>
