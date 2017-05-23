@@ -11,6 +11,8 @@ import './pages/PageLogin.js'
 import './pages/PageRegister.js'
 import './pages/PageProfile.js'
 import './pages/PageChat.js'
+import './pages/PageError.js'
+
 // W
 import './pages/PageProjectEdit.js'
 import './pages/PageProjectShow.js'
@@ -21,7 +23,6 @@ import './layouts/menu.js'
 import './layouts/project.js'
 import './layouts/users.js'
 import './layouts/projects.js'
-
 
 Template.main.helpers({
   countProject: function () {
