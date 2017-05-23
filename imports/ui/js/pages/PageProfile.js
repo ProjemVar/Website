@@ -22,10 +22,12 @@ Template.PageProfile.helpers({
   // Not same in project.js
   isAdminOrYourself () {
     let id = FlowRouter.getParam('id')
-    let username = Meteor.user().username
-    let userId = Meteor.userId()
-    if (username === 'admin' || userId === id) {
-      return true
+    if (Meteor.user()) {
+      let username = Meteor.user().username
+      let userId = Meteor.userId()
+      if (username === 'admin' || userId === id) {
+        return true
+      }
     }
     return false
   }

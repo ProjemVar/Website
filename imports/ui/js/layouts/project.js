@@ -8,11 +8,13 @@ import '../../html/layouts/project.html'
 Template.project.helpers({
   // not same other isAdminOrYourself
   isAdminOrYourself () {
-    var username = Meteor.user().username
-    let id = this._id
-    let project = Projects.findOne({_id: id})
-    if (username === 'admin' || username === project.author) {
-      return true
+    if (Meteor.user()) {
+      let username = Meteor.user().username
+      let id = this._id
+      let project = Projects.findOne({_id: id})
+      if (username === 'admin' || username === project.author) {
+        return true
+      }
     }
     return false
   },

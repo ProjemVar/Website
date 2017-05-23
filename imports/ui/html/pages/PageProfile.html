@@ -1,5 +1,4 @@
 <template name="PageProfile">
-  {{#if currentUser }}
   <div class="row">
       <div class="col-sm-4 well col-sm-offset-4">
         <dl>
@@ -18,15 +17,12 @@
         {{/if}}
     </div>
   </div>
-    {{#if isAdminOrYourself }}
-      <h1>My Projects</h1>
-    {{else}}
-      <h1>Profile Projects</h1>
-    {{/if}}
-    {{#each getUserProjects }}
-      {{> project }}
-    {{/each}}
+  {{#if isAdminOrYourself }}
+    <h1>My Projects</h1>
   {{else}}
-    <h2>Please <a href="/login/">login</a></h2>
+    <h1>Profile Projects</h1>
   {{/if}}
+  {{#each getUserProjects }}
+    {{> project }}
+  {{/each}}
 </template>
