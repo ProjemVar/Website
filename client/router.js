@@ -1,5 +1,7 @@
+import { Meteor } from 'meteor/meteor'
 import { FlowRouter } from 'meteor/kadira:flow-router'
 import { BlazeLayout } from 'meteor/kadira:blaze-layout'
+import { Projects } from '../lib/collections/collections.js'
 import '../imports/ui/js/main.js'
 
 FlowRouter.route('/admin', {
@@ -26,19 +28,35 @@ FlowRouter.route('/chat/:id', {
 
 FlowRouter.route('/profile/:id', {
   action: function (params, queryParams) {
-    BlazeLayout.render('main', {
-      content: 'PageProfile',
-      params: params
-    })
+    console.log('FlowRouter profile id:', params.id)
+    if (Meteor.users.findOne({_id: params.id})) {
+      BlazeLayout.render('main', {
+        content: 'PageProfile',
+        params: params
+      })
+    } else {
+      BlazeLayout.render('main', {
+        content: 'PageError',
+        params: params
+      })
+    }
   }
 })
 
 FlowRouter.route('/profile/edit/:id', {
   action: function (params, queryParams) {
-    BlazeLayout.render('main', {
-      content: 'PageProfileEdit',
-      params: params
-    })
+    console.log('FlowRouter profile id:', params.id)
+    if (Meteor.users.findOne({_id: params.id})) {
+      BlazeLayout.render('main', {
+        content: 'PageProfileEdit',
+        params: params
+      })
+    } else {
+      BlazeLayout.render('main', {
+        content: 'PageError',
+        params: params
+      })
+    }
   }
 })
 
@@ -62,18 +80,34 @@ FlowRouter.route('/projects/', {
 
 FlowRouter.route('/project/:id', {
   action: function (params, queryParams) {
-    BlazeLayout.render('main', {
-      content: 'PageProjectShow',
-      params: params
-    })
+    console.log('FlowRouter project id:', params.id)
+    if (Projects.findOne({_id: params.id})) {
+      BlazeLayout.render('main', {
+        content: 'PageProjectShow',
+        params: params
+      })
+    } else {
+      BlazeLayout.render('main', {
+        content: 'PageError',
+        params: params
+      })
+    }
   }
 })
 FlowRouter.route('/project/edit/:id', {
   action: function (params, queryParams) {
-    BlazeLayout.render('main', {
-      content: 'PageProjectEdit',
-      params: params
-    })
+    console.log('FlowRouter project id:', params.id)
+    if (Projects.findOne({_id: params.id})) {
+      BlazeLayout.render('main', {
+        content: 'PageProjectEdit',
+        params: params
+      })
+    } else {
+      BlazeLayout.render('main', {
+        content: 'PageError',
+        params: params
+      })
+    }
   }
 })
 // project end
